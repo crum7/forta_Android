@@ -45,6 +45,7 @@ import java.util.concurrent.Executor
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
+import kotlin.reflect.typeOf
 
 
 class settings : Fragment() {
@@ -83,17 +84,23 @@ class settings : Fragment() {
 
 
         //誰が自分の時間割を見ているか用
+        var name2 = ""
         var display_name = arrayListOf("")
         var real_name2=arrayListOf("")
         var name_array = arrayListOf("")
+        var virtual_name_list = listOf("")
+
 
         //自分がブロックした人
         var display_name_blo = arrayListOf("")
         var real_name2_blo=arrayListOf("")
         var name_array_blo = arrayListOf("")
+        var virtual_name_list_blo = listOf("")
 
         var documentID = ""
         var name_who = ""
+        var name_who_blo = ""
+
 
 
 
@@ -109,12 +116,12 @@ class settings : Fragment() {
                     Log.d(TAG , "${document.id} => ${document.data}")
 
                     val name = document.data.toString()
+
                     name_array.add(document.data.toString())
                     //Toast.makeText(context , document.id.toString() , Toast.LENGTH_SHORT).show()
 
                     documentID=document.id
 
-                    val tokusyu = name.replace(Regex("[={}*]") , "").replace("display_name","")
 
 
                     db.collection("users_profile").document(document.id.toString()).collection("admit_friends").whereEqualTo("name",user_name)
@@ -122,41 +129,41 @@ class settings : Fragment() {
                         .addOnSuccessListener { result ->
 
 
-
-
                             for (document in result) {
                                 Log.d(TAG , "${document.id} => ${document.data}")
-                                display_name.add(document.id.toString())
-                                real_name2.add(document.id)
-
-                                name_who = document.id
 
 
+                                virtual_name_list=document.id.split("}")
+                                name_who=document.id
 
-                                //Toast.makeText(context , document.id.toString() , Toast.LENGTH_SHORT).show()
+
+                                //virtual_name[1](メールアドレスの先頭の名前)を使って、display_nameを探して、表示する
+                                db.collection("users_profile").document(virtual_name_list[1])
+                                    .get()
+                                    .addOnSuccessListener { documents ->
+
+                                        name2=documents.data.toString().replace(Regex("[={}*]") , "")
+                                            .replace("display_name" , "")
+
+                                        //display_nameは、ユーザー名
+                                        display_name.add(name2)
+
+                                        //real_name2は、メールアドレスの先頭
+                                        real_name2.add(virtual_name_list[1])
 
 
+
+                                        val adapter=ArrayAdapter<String>(
+                                            requireContext() ,
+                                            android.R.layout.simple_list_item_1 ,
+                                            display_name//本番環境ではhyouzi_array
+                                        )
+                                        dare.setAdapter(adapter)
+
+                                    }
                             }
-                            val adapter=ArrayAdapter<String>(
-                                requireContext() ,
-                                android.R.layout.simple_list_item_1 ,
-                                display_name//本番環境ではhyouzi_array
-                            )
-                            dare.setAdapter(adapter)
-
-
-
                         }
-
-
-
-
-
-
                 }
-
-
-
             }
 
 
@@ -170,9 +177,7 @@ class settings : Fragment() {
             //Toast.makeText(context , real_name[position] , Toast.LENGTH_SHORT).show()
 
             //real_name
-            val Bundle = real_name2[position]
-            //Toast.makeText(context, "$Bundle", Toast.LENGTH_SHORT).show()
-
+            val Bundle = display_name[position]
 
 
             //ブロックするかどうかのダイアログ表示
@@ -186,15 +191,16 @@ class settings : Fragment() {
                 .setPositiveButton("OK") { dialog , which ->
 
                     val blocklist=hashMapOf(
-                        "name" to real_name2[position] ,
+                        "name" to display_name[position] ,
                     )
+
 
                     //block_listに名前を追記する
                     db.collection("users_profile").document("$user_name")
                         .collection("block_list").document(real_name2[position]).set(blocklist)
 
                     //blockされてる方のadmit_firendsから自分の名前を消す。
-                    db.collection("users_profile").document(documentID).collection("admit_friends").document(name_who)
+                    db.collection("users_profile").document(virtual_name_list[1]).collection("admit_friends").document(name_who)
                         .delete()
                         .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
                         .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
@@ -205,15 +211,6 @@ class settings : Fragment() {
                         .set(user_name)*/
 
 
-
-
-
-                    //ここのコレクションからブロックした人のドキュメントを削除
-
-                    db.collection("users_profile").document(user_name).collection("admit_friends").document(real_name2[position])
-                        .delete()
-                        .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
-                        .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
                 }
 
 
@@ -242,8 +239,8 @@ class settings : Fragment() {
 
 
 
-        //ブロックしている人を見る
-        db.collection("users_profile")
+        //現在ログインしている人の名前を利用して、ブロックしている人を見る
+        db.collection("users_profile").document(user_name).collection("block_list")
             .get()
             .addOnSuccessListener { result ->
 
@@ -253,47 +250,35 @@ class settings : Fragment() {
 
                     val name_blo = document.data.toString()
                     name_array_blo.add(document.data.toString())
-                    //Toast.makeText(context , document.id.toString() , Toast.LENGTH_SHORT).show()
-
-                    val tokusyu_blo = name_blo.replace(Regex("[={}*]") , "").replace("display_name","")
-
-
-                    db.collection("users_profile").document(document.id.toString()).collection("block_list")
-                        .get()
-                        .addOnSuccessListener { result ->
+                    name_who_blo = document.id
 
 
 
+                    var name2_blo=document.data.toString().replace(Regex("[={}*]") , "")
+                        .replace("display_name" , "")
 
-                            for (document in result) {
-                                Log.d(TAG , "${document.id} => ${document.data}")
-                                display_name_blo.add(document.id.toString())
-                                real_name2_blo.add(document.id)
-                                //Toast.makeText(context , document.id.toString() , Toast.LENGTH_SHORT).show()
+                    //display_nameは、ユーザー名
+                    display_name_blo.add(name2_blo)
 
-
-                            }
-                            val adapter=ArrayAdapter<String>(
-                                requireContext() ,
-                                android.R.layout.simple_list_item_1 ,
-                                display_name_blo//本番環境ではhyouzi_array
-                            )
-                            block.setAdapter(adapter)
-
-
-
-                        }
-
-
-
+                    //real_name2は、メールアドレスの先頭
+                    real_name2_blo.add(document.id)
 
 
 
                 }
+                val adapter=ArrayAdapter<String>(
+                    requireContext() ,
+                    android.R.layout.simple_list_item_1 ,
+                    display_name_blo
+                )
+                block.setAdapter(adapter)
 
 
 
             }
+
+
+
 
 
 
@@ -306,7 +291,7 @@ class settings : Fragment() {
             //Toast.makeText(context , real_name[position] , Toast.LENGTH_SHORT).show()
 
             //real_name
-            val Bundle_blo = real_name2_blo[position]
+            val Bundle_blo = display_name_blo[position]
             //Toast.makeText(context, "$Bundle_blo", Toast.LENGTH_SHORT).show()
 
 
@@ -322,12 +307,15 @@ class settings : Fragment() {
                 .setPositiveButton("OK") { dialog , which ->
 
                     val blocklist=hashMapOf(
-                        "name" to real_name2_blo[position] ,
+                        "name" to display_name_blo[position],
                     )
 
 
-                    db.collection("users_profile").document("$user_name")
-                        .collection("block_list").document(name_array[position]+user_name+"}").set(blocklist)
+                    //block_listからブロックされた人を消す。
+                    db.collection("users_profile").document(user_name).collection("block_list").document(name_who_blo)
+                        .delete()
+                        .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+                        .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
                 }
 
 

@@ -92,6 +92,7 @@ class zikannwariFriends : Fragment() {
                                 android.R.layout.simple_list_item_1 ,
                                 display_name//本番環境ではhyouzi_array
                             )
+
                             list.setAdapter(adapter)
 
                             //ここをnameにすると、forループの中だからおかしくなる。
@@ -127,12 +128,6 @@ class zikannwariFriends : Fragment() {
                 }
 
 
-                            //Listviewの表をクリックしたときの動作
-
-
-
-
-                            //ListViewで表示
 
 
 
