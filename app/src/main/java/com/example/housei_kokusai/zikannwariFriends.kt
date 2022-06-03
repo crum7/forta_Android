@@ -60,19 +60,24 @@ class zikannwariFriends : Fragment() {
         var name2 = ""
 
         var tokusyu=""
+        var display_name=arrayListOf("")
+        var real_name=arrayListOf("")
+
 
 
         db.collection("users_profile").document("$user_name").collection("admit_friends")
             .get()
             .addOnSuccessListener { result ->
 
-                var display_name=arrayListOf("")
-                var real_name=arrayListOf("")
+
+
                 for (document in result) {
                     Log.d(TAG , "${document.id} => ${document.data}")
 
 
                     name=document.data.toString().replace(Regex("[={}*]") , "").replace("name","")
+
+
 
                     //nameを使って、display_nameを探して、表示する
                     db.collection("users_profile").document(name)
@@ -80,12 +85,9 @@ class zikannwariFriends : Fragment() {
                         .addOnSuccessListener { documents ->
 
 
-                            name2=documents.data.toString().replace(Regex("[={}*]") , "")
-                                .replace("display_name" , "")
+                            name = document.data.toString().replace(Regex("[={}*]") , "").replace("name","")
+                            display_name.add(name)
 
-
-
-                            display_name.add(name2)
 
                             val adapter=ArrayAdapter<String>(
                                 requireContext() ,
@@ -96,9 +98,9 @@ class zikannwariFriends : Fragment() {
                             list.setAdapter(adapter)
 
                             //ここをnameにすると、forループの中だからおかしくなる。
-                            name = document.data.toString().replace(Regex("[={}*]") , "").replace("name","")
-                            real_name.add(name)
-                            Toast.makeText(context , name , Toast.LENGTH_SHORT).show()
+                            name2 = document.id.toString().replace(Regex("[={}*]") , "").replace("name","")
+                            real_name.add(name2)
+
 
 
 

@@ -75,7 +75,6 @@ class settings : Fragment() {
 
         //自分の名前
         val user_name=Firebase.auth.currentUser?.displayName.toString()
-        //Toast.makeText(requireActivity() , user_name , Toast.LENGTH_SHORT).show()
 
         val changeName=requireActivity().findViewById<EditText>(R.id.changeName)
         val nowname=requireActivity().findViewById<TextView>(R.id.nowname)
@@ -88,16 +87,16 @@ class settings : Fragment() {
         var display_name = arrayListOf("")
         var real_name2=arrayListOf("")
         var name_array = arrayListOf("")
-        var virtual_name_list = listOf("")
+
 
 
         //自分がブロックした人
         var display_name_blo = arrayListOf("")
         var real_name2_blo=arrayListOf("")
         var name_array_blo = arrayListOf("")
-        var virtual_name_list_blo = listOf("")
 
-        var documentID = ""
+
+
         var name_who = ""
         var name_who_blo = ""
 
@@ -107,7 +106,7 @@ class settings : Fragment() {
 
 
         //誰が自分の時間割りを見ているか
-        db.collection("users_profile")
+        db.collection("users_profile").document(user_name).collection("watch_by")
             .get()
             .addOnSuccessListener { result ->
 
@@ -115,55 +114,42 @@ class settings : Fragment() {
                 for (document in result) {
                     Log.d(TAG , "${document.id} => ${document.data}")
 
-                    val name = document.data.toString()
+
 
                     name_array.add(document.data.toString())
-                    //Toast.makeText(context , document.id.toString() , Toast.LENGTH_SHORT).show()
-
-                    documentID=document.id
 
 
 
-                    db.collection("users_profile").document(document.id.toString()).collection("admit_friends").whereEqualTo("name",user_name)
-                        .get()
-                        .addOnSuccessListener { result ->
+                    name_who=document.id
 
 
-                            for (document in result) {
-                                Log.d(TAG , "${document.id} => ${document.data}")
+                    //display_nameは、ユーザー名
+                    display_name.add(
+                        document.data.toString().replace(Regex("[={}*]") , "")
+                            .replace("name" , "")
+                    )
 
-
-                                virtual_name_list=document.id.split("}")
-                                name_who=document.id
-
-
-                                //virtual_name[1](メールアドレスの先頭の名前)を使って、display_nameを探して、表示する
-                                db.collection("users_profile").document(virtual_name_list[1])
-                                    .get()
-                                    .addOnSuccessListener { documents ->
-
-                                        name2=documents.data.toString().replace(Regex("[={}*]") , "")
-                                            .replace("display_name" , "")
-
-                                        //display_nameは、ユーザー名
-                                        display_name.add(name2)
-
-                                        //real_name2は、メールアドレスの先頭
-                                        real_name2.add(virtual_name_list[1])
+                    //real_name2は、メールアドレスの先頭
+                    real_name2.add(document.id)
 
 
 
-                                        val adapter=ArrayAdapter<String>(
-                                            requireContext() ,
-                                            android.R.layout.simple_list_item_1 ,
-                                            display_name//本番環境ではhyouzi_array
-                                        )
-                                        dare.setAdapter(adapter)
 
-                                    }
-                            }
-                        }
+
+
+
+
+
+
+
                 }
+                val adapter=ArrayAdapter<String>(
+                    requireContext() ,
+                    android.R.layout.simple_list_item_1 ,
+                    display_name//本番環境ではhyouzi_array
+                )
+                dare.setAdapter(adapter)
+
             }
 
 
@@ -174,7 +160,7 @@ class settings : Fragment() {
             //safe argsによる　friendsからFriendsDetailにデータ渡し
             //https://qiita.com/m-coder/items/3a8e66d49f2830b09bf4
             //real_nameには、ユーザーネームが配列で格納されているのでそれをpositionで設定してる
-            //Toast.makeText(context , real_name[position] , Toast.LENGTH_SHORT).show()
+
 
             //real_name
             val Bundle = display_name[position]
@@ -183,7 +169,8 @@ class settings : Fragment() {
             //ブロックするかどうかのダイアログ表示
             AlertDialog.Builder(requireActivity())
                 .setTitle(display_name[position])
-                .setMessage("ブロックしますか？")
+                .setMessage("ブロックしますか？" +
+                        "ブロックした場合は、自分の時間割が相手に表示されなくなります。"+"自分の履歴に相手の名前が表示されなくなります。")
 
 
 
@@ -195,20 +182,48 @@ class settings : Fragment() {
                     )
 
 
-                    //block_listに名前を追記する
-                    db.collection("users_profile").document("$user_name")
-                        .collection("block_list").document(real_name2[position]).set(blocklist)
 
-                    //blockされてる方のadmit_firendsから自分の名前を消す。
-                    db.collection("users_profile").document(virtual_name_list[1]).collection("admit_friends").document(name_who)
+                    //自分にblockされてる方のadmit_firendsから自分の名前を消す。
+                    //自分のadmit_friendsからblockする相手の名前を取得する
+                    db.collection("users_profile").document(user_name).collection("admit_friends").document(name_who)
+                        .get()
+                        .addOnSuccessListener { result ->
+
+                            var partner_real_name = result.id
+
+                            //取得した相手の名前のadmit_friendsから自分の名前を消す。
+                            db.collection("users_profile").document(partner_real_name).collection("admit_friends").document(user_name)
+                                .delete()
+                                .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+                                .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+
+
+
+                            //watch_byから、自分にblockされてる人の名前を消す.
+                            db.collection("users_profile").document(user_name).collection("watch_by").document(partner_real_name)
+                                .delete()
+                                .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+                                .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+
+
+                        }
+
+
+                    //admit_friendsから名前を消去する
+                    db.collection("users_profile").document(user_name).collection("admit_friends").document(name_who)
                         .delete()
                         .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
                         .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
 
-                    /*
-                    //blockされてる方に誰にブロックされているかを書く。
-                    db.collection("users_profile").document(documentID).collection("blocked_by").document(name_who)
-                        .set(user_name)*/
+
+
+
+                    //block_listに名前を追記する
+                    db.collection("users_profile").document(user_name)
+                        .collection("block_list").document(real_name2[position]).set(blocklist)
+
+
+
 
 
                 }
@@ -255,7 +270,7 @@ class settings : Fragment() {
 
 
                     var name2_blo=document.data.toString().replace(Regex("[={}*]") , "")
-                        .replace("display_name" , "")
+                        .replace("name" , "")
 
                     //display_nameは、ユーザー名
                     display_name_blo.add(name2_blo)
@@ -288,11 +303,11 @@ class settings : Fragment() {
             //safe argsによる　friendsからFriendsDetailにデータ渡し
             //https://qiita.com/m-coder/items/3a8e66d49f2830b09bf4
             //real_nameには、ユーザーネームが配列で格納されているのでそれをpositionで設定してる
-            //Toast.makeText(context , real_name[position] , Toast.LENGTH_SHORT).show()
+
 
             //real_name
             val Bundle_blo = display_name_blo[position]
-            //Toast.makeText(context, "$Bundle_blo", Toast.LENGTH_SHORT).show()
+
 
 
 
@@ -365,7 +380,6 @@ class settings : Fragment() {
             if (e != null) {
                 Log.w(TAG , "Listen failed." , e)
 
-                //Toast.makeText(context , "${snapshot?.data}" , Toast.LENGTH_SHORT).show()
                 return@addSnapshotListener
             }
             if (snapshot != null && snapshot.exists()) {
@@ -376,7 +390,7 @@ class settings : Fragment() {
                 )
             } else {
                 Log.d(TAG , "Current data: null")
-                //Toast.makeText(context , "${snapshot?.data}" , Toast.LENGTH_SHORT).show()
+
 
 
                 //名前が設定されてなかったら、メールアドレスの名前を入れる。

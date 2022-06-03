@@ -57,7 +57,36 @@ class friendskennsaku : Fragment(){
         var display_name = arrayListOf("")
         var real_name = arrayListOf("")
         var name = arrayListOf("")
+        var my_virtual_name = ""
+        var my_block_name = ""
         var kore = ""
+
+
+
+        //自分のユーザーネーム
+        db.collection("users_profile").document(user_name.toString())
+            .get()
+            .addOnSuccessListener { result_name ->
+                my_virtual_name = result_name.data.toString().replace(Regex("[={}*]") , "").replace("display_name","")
+
+            }
+
+        //自分がブロックした人を検索リストから消すために、ブロックした人の名前をblock_listから取得する。
+        db.collection("users_profile").document(user_name.toString()).collection("block_list")
+            .get()
+            .addOnSuccessListener { result ->
+
+
+                for (document in result) {
+                    my_block_name = document.data.toString().replace(Regex("[={}*]") , "").replace("name","")
+                }
+            }
+
+
+
+
+
+
 
 
         db.collection("users_profile")
@@ -69,7 +98,7 @@ class friendskennsaku : Fragment(){
 
                     name.add(document.data.toString())
                     kore = document.data.toString()
-                    //Toast.makeText(context , name , Toast.LENGTH_SHORT).show()
+
 
                     val tokusyu = kore.replace(Regex("[={}*]") , "").replace("display_name","")
 
@@ -80,6 +109,21 @@ class friendskennsaku : Fragment(){
                     //配列にする
                     display_name.add(tokusyu)
                     real_name.add(document.id)
+
+                    //自分の名前とブロックした人の名前を削除
+                    // ここで多分real_name[postion]との数字の関連性が取れなくなっててエラーで落ちる。なんとかしろ
+                    display_name.remove(my_virtual_name)
+                    display_name.remove(my_block_name)
+
+                    //real_nameは自分のメールアドレスの先頭の文字が含まれているのでそれを消す。
+                    real_name.remove(user_name.toString())
+
+
+
+
+
+
+
 
 
 
@@ -93,7 +137,20 @@ class friendskennsaku : Fragment(){
                     display_name//本番環境ではhyouzi_array
                 )
 
+
+
+
+
+
+
                 list.setAdapter(adapter)
+
+
+
+
+
+
+
             }
 
 
@@ -109,7 +166,10 @@ class friendskennsaku : Fragment(){
 
             //real_name
             val Bundle = real_name[position]
-            Toast.makeText(context, "$Bundle", Toast.LENGTH_SHORT).show()
+
+
+
+
 
 
 
@@ -120,19 +180,39 @@ class friendskennsaku : Fragment(){
 
 
 
-
+                    //OKボタン
                 .setPositiveButton("OK") { dialog , which ->
 
                     val admit_friends=hashMapOf(
-                         "name" to real_name[position] ,
+                         "name" to display_name[position] ,
                     )
 
+                    val watch_by = hashMapOf(
+                        "name" to my_virtual_name,
+                    )
 
+                    //admit_friendsに友達の名前を追記する
                     db.collection("users_profile").document("$user_name")
-                        .collection("admit_friends").document(name[position]+user_name).set(admit_friends)
+                        .collection("admit_friends").document(real_name[position]).set(admit_friends)
+
+
+                    //users_profileの友達のwatch_byに追記する
+                    db.collection("users_profile").document(real_name[position])
+                        .collection("watch_by").document(user_name.toString()).set(watch_by)
+
                 }
 
 
+
+
+
+
+
+
+
+
+
+                    //NOボタン
                 .setNegativeButton("No", { dialog, which ->
                     // TODO:Noが押された時の挙動
                 })
