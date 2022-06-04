@@ -61,7 +61,13 @@
 
         <action
             android:id="@+id/action_zikannwariFriends_to_zikannwariFriendsDetail"
-            app:destination="@id/zikannwariFriendsDetail" />
+            app:destination="@id/zikannwariFriendsDetail"
+
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            />
         <action
             android:id="@+id/action_zikannwariFriends_to_friendskennsaku"
             app:destination="@id/friendskennsaku" />

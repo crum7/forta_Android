@@ -3,6 +3,10 @@ package com.example.housei_kokusai
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.IntentSender
+import android.graphics.Color.BLUE
+import android.graphics.Color.WHITE
+import android.graphics.drawable.ColorDrawable
+import android.hardware.camera2.params.RggbChannelVector.BLUE
 import android.net.Uri
 import android.os.Bundle
 import com.google.firebase.firestore.ktx.firestore
@@ -22,7 +26,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.analytics.ktx.analytics
-
+import com.google.type.Color
 
 
 import kotlinx.coroutines.CoroutineScope
@@ -40,6 +44,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //アプリバーの色とか変える。
+
 
         //googleアナリティクスの宣言
         firebaseAnalytics = Firebase.analytics
