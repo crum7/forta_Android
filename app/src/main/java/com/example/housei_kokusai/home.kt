@@ -2,7 +2,9 @@ package com.example.housei_kokusai
 
 
 import android.content.Context
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Html
 import com.example.housei_kokusai.R.id
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,6 +24,7 @@ import com.example.housei_kokusai.home as home
 
 //Fragmentを継承したclassを作る　これがなきゃ始まらない
 class home:Fragment() ,View.OnClickListener{
+
 
 
 
@@ -59,7 +62,6 @@ class home:Fragment() ,View.OnClickListener{
 
             R.id.zyugyouzikann -> navController!!.navigate(R.id.action_home_to_zyugyouzikann2)
 
-            R.id.ToDoリスト -> navController!!.navigate(R.id.action_home_to_todoList)
         }
 
     }

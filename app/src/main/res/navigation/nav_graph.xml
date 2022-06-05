@@ -8,33 +8,30 @@
     <fragment
         android:id="@+id/home"
         android:name="com.example.housei_kokusai.home"
-        android:label="fragment_home"
+        android:label="hello"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_home_to_zyugyouzikann2"
             app:destination="@id/zyugyouzikann2" />
-        <action
-            android:id="@+id/action_home_to_todoList"
-            app:destination="@id/todoList" />
     </fragment>
+
+
     <fragment
         android:id="@+id/tourokuManday"
         android:name="com.example.housei_kokusai.tourokuManday"
-        android:label="fragment_touroku_manday"
+        android:label=""
         tools:layout="@layout/fragment_touroku_manday" />
+
+
     <fragment
         android:id="@+id/zyugyouzikann2"
         android:name="com.example.housei_kokusai.zyugyouzikann"
         android:label="fragment_zyugyouzikann"
         tools:layout="@layout/fragment_zyugyouzikann" />
     <fragment
-        android:id="@+id/todoList"
-        android:name="com.example.housei_kokusai.TodoList"
-        android:label="TodoList" />
-    <fragment
         android:id="@+id/login2"
         android:name="com.example.housei_kokusai.login"
-        android:label="fragment_login"
+        android:label=""
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_login2_to_login_ad2"
@@ -43,7 +40,7 @@
     <fragment
         android:id="@+id/login_ad"
         android:name="login_ad"
-        android:label="login_ad" >
+        android:label="" >
         <action
             android:id="@+id/action_login_ad_to_home2"
             app:destination="@id/home" />
@@ -56,7 +53,7 @@
     <fragment
         android:id="@+id/zikannwariFriends"
         android:name="com.example.housei_kokusai.zikannwariFriends"
-        android:label="fragment_zikannwari_friends"
+        android:label=""
         tools:layout="@layout/fragment_zikannwari_friends" >
 
         <action
@@ -79,7 +76,7 @@
     <fragment
         android:id="@+id/zikannwariFriendsDetail"
         android:name="com.example.housei_kokusai.zikannwariFriendsDetail"
-        android:label="fragment_zikannwari_friends_detail"
+        android:label=""
         tools:layout="@layout/fragment_zikannwari_friends_detail" />
         <argument
             android:name="subject"
@@ -89,12 +86,12 @@
     <fragment
         android:id="@+id/settings2"
         android:name="com.example.housei_kokusai.settings"
-        android:label="fragment_settings"
+        android:label=""
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/friendskennsaku"
         android:name="com.example.housei_kokusai.friendskennsaku"
-        android:label="friendskennsaku" />
+        android:label="" />
 
 
 </navigation>

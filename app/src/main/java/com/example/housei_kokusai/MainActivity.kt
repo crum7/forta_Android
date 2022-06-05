@@ -9,9 +9,11 @@ import android.graphics.drawable.ColorDrawable
 import android.hardware.camera2.params.RggbChannelVector.BLUE
 import android.net.Uri
 import android.os.Bundle
+import android.text.Html
 import com.google.firebase.firestore.ktx.firestore
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -55,12 +57,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         val db = Firebase.firestore
 
 
+
+
         //navigationコンポーネントの宣言
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
         setupActionBarWithNavController(navController)
+
 
 
         //buttom menuの定義
