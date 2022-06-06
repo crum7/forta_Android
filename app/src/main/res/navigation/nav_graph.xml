@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_home_to_zyugyouzikann2"
             app:destination="@id/zyugyouzikann2" />
+        <action
+            android:id="@+id/action_home_to_settings2"
+            app:destination="@id/settings2" />
+        <action
+            android:id="@+id/action_home_to_zikannwariFriends2"
+            app:destination="@id/zikannwariFriends" />
     </fragment>
 
 
@@ -26,7 +32,7 @@
     <fragment
         android:id="@+id/zyugyouzikann2"
         android:name="com.example.housei_kokusai.zyugyouzikann"
-        android:label="fragment_zyugyouzikann"
+        android:label="@string/時間割"
         tools:layout="@layout/fragment_zyugyouzikann" />
     <fragment
         android:id="@+id/login2"

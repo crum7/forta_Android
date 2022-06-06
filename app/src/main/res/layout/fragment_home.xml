@@ -10,9 +10,6 @@
     >
 
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
@@ -20,150 +17,83 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/メニュー"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/メニュー"
-        android:gravity="center"
-        android:stateListAnimator="@null"
-        />
+
 
     <Button
-        android:id="@+id/時間割"
+        android:id="@+id/settings_move"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/メニュー"
-        android:text="@string/時間割"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="ユーザー名設定"
         android:gravity="center"
         android:stateListAnimator="@null"
 
         />
 
 
-    <ImageView
-        android:id="@+id/list"
-        android:layout_width="135dp"
-        android:layout_height="146dp"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="284dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/list"
-        android:src="@drawable/list"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/時間割英語"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/時間割"
-        android:text="@string/時間割英語"
+        app:layout_constraintTop_toBottomOf="@id/settings_move"
+        android:text="友達に公開される名前を変更することができます。"
         android:gravity="center"
         />
+
+
+        <TextView
+            android:id="@+id/white"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/時間割英語"
+
+            android:gravity="center"
+            />
 
     <Button
         android:id="@+id/touroku_button"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:text="@string/時間割登録"
+        android:text="友達確認"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/時間割英語"
+        app:layout_constraintTop_toBottomOf="@id/white"
         android:stateListAnimator="@null"
         />
 
-    <ImageView
-        android:id="@+id/paper"
-        android:layout_width="127dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="165dp"
-        android:layout_centerVertical="true"
-        android:src="@drawable/paper"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/paper" />
-
-    <TextView
+        <TextView
         android:id="@+id/時間割登録英語"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/touroku_button"
-        android:text="@string/時間割登録英語"
+        android:text="自分が友達登録した人を見ることができます。"
         android:gravity="center"
         />
 
+        <TextView
+            android:id="@+id/white2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/時間割登録英語"
 
+            android:gravity="center"
+            />
 
-
-    <Button
-        android:id="@+id/zyugyouzikann"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:text="@string/授業時間"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/時間割登録英語"
-        android:stateListAnimator="@null"/>
-
-    <ImageView
-        android:id="@+id/clock"
-        android:layout_width="131dp"
-        android:layout_height="119dp"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="288dp"
-        android:layout_marginTop="280dp"
-        android:src="@drawable/clock"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/clock" />
-
-    <TextView
-        android:id="@+id/授業時間英語"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="@string/授業時間英語"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/zyugyouzikann"
-
-        android:gravity="center"
-        />
-
-    <Button
-        android:id="@+id/ToDoリスト"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:stateListAnimator="@null"
-        android:text="@string/ToDoリスト"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/授業時間英語" />
-
-    <ImageView
-        android:id="@+id/check"
-        android:layout_width="142dp"
-        android:layout_height="133dp"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="288dp"
-        android:layout_marginTop="380dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/check"
-        android:contentDescription="@string/check" />
-
-    <TextView
-        android:id="@+id/ToDoリスト英語"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="@string/ToDoリスト英語"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ToDoリスト"
-        android:gravity="center" />
-
-
+        <Button
+            android:id="@+id/zyugyouzikann"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="@string/授業時間"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/white2"
+            android:stateListAnimator="@null"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

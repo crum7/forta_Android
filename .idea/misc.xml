@@ -29,6 +29,7 @@
         <entry key="app/src/main/res/layout/fragment_todo_list.xml" value="0.28444444444444444" />
         <entry key="app/src/main/res/layout/fragment_touroku_friday.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_touroku_manday.xml" value="0.30782385634886705" />
+        <entry key="app/src/main/res/layout/fragment_touroku_manday_ad.xml" value="0.2975630611372381" />
         <entry key="app/src/main/res/layout/fragment_touroku_thursday.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_touroku_tuesday.xml" value="0.2975630611372381" />
         <entry key="app/src/main/res/layout/fragment_touroku_wednesday.xml" value="0.14444444444444443" />
