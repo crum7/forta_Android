@@ -76,9 +76,14 @@ class friendskennsaku : Fragment(){
             .get()
             .addOnSuccessListener { result ->
 
-
                 for (document in result) {
-                    my_block_name = document.data.toString().replace(Regex("[={}*]") , "").replace("name","")
+
+                    db.collection("users_profile").document(document.id)
+                        .get()
+                        .addOnSuccessListener { result ->
+                            my_block_name = result.data.toString().replace(Regex("[={}*]") , "").replace("display_name","")
+                            Toast.makeText(requireContext() , my_block_name , Toast.LENGTH_SHORT).show()
+                        }
                 }
             }
 
@@ -114,6 +119,8 @@ class friendskennsaku : Fragment(){
                     // ここで多分real_name[postion]との数字の関連性が取れなくなっててエラーで落ちる。なんとかしろ
                     display_name.remove(my_virtual_name)
                     display_name.remove(my_block_name)
+
+
 
                     //real_nameは自分のメールアドレスの先頭の文字が含まれているのでそれを消す。
                     real_name.remove(user_name.toString())
@@ -168,8 +175,7 @@ class friendskennsaku : Fragment(){
             val Bundle = real_name[position]
 
 
-
-
+            Toast.makeText(requireContext() , real_name[position+1] , Toast.LENGTH_SHORT).show()
 
 
 
@@ -191,13 +197,14 @@ class friendskennsaku : Fragment(){
                         "name" to my_virtual_name,
                     )
 
+
                     //admit_friendsに友達の名前を追記する
                     db.collection("users_profile").document("$user_name")
-                        .collection("admit_friends").document(real_name[position]).set(admit_friends)
+                        .collection("admit_friends").document(real_name[position+1]).set(admit_friends)
 
 
                     //users_profileの友達のwatch_byに追記する
-                    db.collection("users_profile").document(real_name[position])
+                    db.collection("users_profile").document(real_name[position+1])
                         .collection("watch_by").document(user_name.toString()).set(watch_by)
 
                 }

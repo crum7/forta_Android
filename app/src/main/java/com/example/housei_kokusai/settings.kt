@@ -105,6 +105,74 @@ class settings : Fragment() {
 
 
 
+        //名前変更
+        val button=view.findViewById<Button>(R.id.save_button_name)
+
+
+        button.setOnClickListener {
+
+
+            val willName=changeName.text.toString()
+
+
+
+            val custom_name=hashMapOf(
+                "display_name" to willName ,
+
+                )
+
+            val custom_name_others=hashMapOf(
+                "name" to willName ,
+
+                )
+
+
+            //自分のところのdisplay_nameの更新
+            db.collection("users_profile").document("$user_name")
+                .update(custom_name as Map<String , Any>)
+
+
+
+            //他の人のblock_list・admit_friends・watch_byのところのnameを変更
+            //ここが一番データ食う
+
+            db.collection("users_profile")
+                .get()
+                .addOnSuccessListener { result ->
+
+                    for(document in result){
+
+                        db.collection("users_profile").document(document.id).collection("watch_by").document(user_name)
+                            .update(custom_name_others as Map<String , Any>)
+
+                        db.collection("users_profile").document(document.id).collection("admit_friends").document(user_name)
+                            .update(custom_name_others as Map<String , Any>)
+
+                        db.collection("users_profile").document(document.id).collection("block_list").document(user_name)
+                            .update(custom_name_others as Map<String , Any>)
+
+                    }
+
+                }
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //誰が自分の時間割りを見ているか
         db.collection("users_profile").document(user_name).collection("watch_by")
             .get()
@@ -123,32 +191,28 @@ class settings : Fragment() {
                     name_who=document.id
 
 
-                    //display_nameは、ユーザー名
-                    display_name.add(
-                        document.data.toString().replace(Regex("[={}*]") , "")
-                            .replace("name" , "")
-                    )
 
-                    //real_name2は、メールアドレスの先頭
-                    real_name2.add(document.id)
+                            //real_name2は、メールアドレスの先頭
+                            real_name2.add(document.id)
 
+                            //display_nameは、ユーザー名
+                            display_name.add(document.data.toString().replace(Regex("[={}*]") , "")
+                                    .replace("display_name" , ""))
 
 
 
 
-
-
-
+                            val adapter=ArrayAdapter<String>(
+                                requireContext() ,
+                                android.R.layout.simple_list_item_1 ,
+                                display_name//本番環境ではhyouzi_array
+                            )
+                            dare.setAdapter(adapter)
 
 
 
                 }
-                val adapter=ArrayAdapter<String>(
-                    requireContext() ,
-                    android.R.layout.simple_list_item_1 ,
-                    display_name//本番環境ではhyouzi_array
-                )
-                dare.setAdapter(adapter)
+
 
             }
 
@@ -409,29 +473,9 @@ class settings : Fragment() {
         }
 
 
-        val button=view.findViewById<Button>(R.id.save_button_name)
-
-
-        button.setOnClickListener {
-
-
-            val willName=changeName.text.toString()
 
 
 
-            val custom_name=hashMapOf(
-                "display_name" to willName ,
-
-                )
-
-
-            //名前の更新
-
-            db.collection("users_profile").document("$user_name")
-                .update(custom_name as Map<String , Any>)
-
-
-        }
 
 
 
