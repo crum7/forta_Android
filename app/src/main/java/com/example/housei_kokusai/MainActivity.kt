@@ -13,10 +13,12 @@ import android.text.Html
 import com.google.firebase.firestore.ktx.firestore
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
@@ -38,7 +40,7 @@ import kotlinx.coroutines.Dispatchers
 //左上の”戻る”ボタンもここで管理している。 ↓
 //https://developer.android.com/courses/pathways/android-basics-kotlin-unit-3-pathway-4?authuser=2&hl=ja#codelab-https://developer.android.com/codelabs/basic-android-kotlin-training-navigation-backstack
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private lateinit var firebaseAnalytics: FirebaseAnalytics
@@ -46,6 +48,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         //アプリバーの色とか変える。
 
@@ -60,11 +63,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
 
         //navigationコンポーネントの宣言
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.findNavController()
 
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
         setupActionBarWithNavController(navController)
+
+
+
 
 
 
@@ -74,6 +81,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         val navController = findNavController(R.id.nav_host_fragment)
         buttomNavigationView.setupWithNavController(navController)
     }
+
+
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
 
