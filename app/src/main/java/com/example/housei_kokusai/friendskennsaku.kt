@@ -9,11 +9,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -60,6 +57,41 @@ class friendskennsaku : Fragment(){
         var my_virtual_name = ""
         var my_block_name = ""
         var kore = ""
+
+
+
+        // テキストフィルターを有効にする
+        list.isTextFilterEnabled = true
+
+
+        //検索ボタン
+        val searchBar = view.findViewById<SearchView>(R.id.search_bar)
+
+        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            // 入力テキストに変更があったとき
+            override fun onQueryTextChange(newText: String): Boolean {
+                if (newText.isNullOrBlank()) {
+                    list.clearTextFilter()
+                } else {
+                    list.setFilterText(newText)
+                }
+                // text changed
+                return false
+            }
+
+
+            // 検索ボタンを押したとき
+            override fun onQueryTextSubmit(query: String): Boolean {
+                // submit button pressed
+                return false
+            }
+        })
+
+
+
+
+
 
 
 
@@ -126,16 +158,6 @@ class friendskennsaku : Fragment(){
                     real_name.remove(user_name.toString())
 
 
-
-
-
-
-
-
-
-
-
-
                 }
                 //ListViewで表示
                 val adapter = ArrayAdapter<String>(
@@ -145,18 +167,7 @@ class friendskennsaku : Fragment(){
                 )
 
 
-
-
-
-
-
                 list.setAdapter(adapter)
-
-
-
-
-
-
 
             }
 
@@ -209,16 +220,6 @@ class friendskennsaku : Fragment(){
 
                 }
 
-
-
-
-
-
-
-
-
-
-
                     //NOボタン
                 .setNegativeButton("No", { dialog, which ->
                     // TODO:Noが押された時の挙動
@@ -228,14 +229,6 @@ class friendskennsaku : Fragment(){
 
 
         }
-
-
-
-
-
-
-
-
     }
 }
 

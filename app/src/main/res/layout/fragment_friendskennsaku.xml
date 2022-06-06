@@ -11,18 +11,30 @@
     >
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#f7f7ff">
 
 
-        <ListView
-            android:id="@+id/list_view_kennsaku"
+
+        <SearchView
+            android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            android:iconifiedByDefault="false"
+            android:queryHint="検索"
+            />
+
+        <ListView
+            android:id="@+id/list_view_kennsaku"
+            android:layout_width="411dp"
+            android:layout_height="832dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_bar" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -197,7 +197,7 @@ class settings : Fragment() {
 
                             //display_nameは、ユーザー名
                             display_name.add(document.data.toString().replace(Regex("[={}*]") , "")
-                                    .replace("display_name" , ""))
+                                    .replace("name" , ""))
 
 
 
