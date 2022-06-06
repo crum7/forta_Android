@@ -4,24 +4,27 @@
 
     <item
         android:id="@+id/tourokuManday"
-        android:title="@string/時間割" android:icon="@drawable/list"
-        app:itemTextColor="@color/black"
+        android:title=""
+        android:icon="@drawable/list"
 
 
 
         />
     <item
         android:id="@+id/home"
-        android:title="総合" android:icon="@drawable/ic_home"/>
+        android:title=""
+        android:icon="@drawable/ic_home"/>
 
 
 
     <item
         android:id="@+id/zikannwariFriends"
-        android:title="友達" android:icon="@drawable/ic_person" />
+        android:title=""
+        android:icon="@drawable/ic_person" />
 
 
     <item
         android:id="@+id/settings2"
-        android:title="設定" android:icon="@drawable/ic_settings"/>
+        android:title=""
+        android:icon="@drawable/ic_settings"/>
 </menu>
