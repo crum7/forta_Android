@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/home"
         android:name="com.example.housei_kokusai.home"
-        android:label="hello"
+        android:label="総合"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_home_to_zyugyouzikann2"
@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/tourokuManday"
         android:name="com.example.housei_kokusai.tourokuManday"
-        android:label=""
+        android:label="時間割"
         tools:layout="@layout/fragment_touroku_manday" />
 
 
@@ -31,7 +31,7 @@
     <fragment
         android:id="@+id/login2"
         android:name="com.example.housei_kokusai.login"
-        android:label=""
+        android:label="ログイン"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_login2_to_login_ad2"
@@ -40,7 +40,7 @@
     <fragment
         android:id="@+id/login_ad"
         android:name="login_ad"
-        android:label="" >
+        android:label="ログイン確認" >
         <action
             android:id="@+id/action_login_ad_to_home2"
             app:destination="@id/home" />
@@ -53,7 +53,7 @@
     <fragment
         android:id="@+id/zikannwariFriends"
         android:name="com.example.housei_kokusai.zikannwariFriends"
-        android:label=""
+        android:label="友達"
         tools:layout="@layout/fragment_zikannwari_friends" >
 
         <action
@@ -76,7 +76,7 @@
     <fragment
         android:id="@+id/zikannwariFriendsDetail"
         android:name="com.example.housei_kokusai.zikannwariFriendsDetail"
-        android:label=""
+        android:label="友達の時間割"
         tools:layout="@layout/fragment_zikannwari_friends_detail" />
         <argument
             android:name="subject"
@@ -86,12 +86,12 @@
     <fragment
         android:id="@+id/settings2"
         android:name="com.example.housei_kokusai.settings"
-        android:label=""
+        android:label="設定"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/friendskennsaku"
         android:name="com.example.housei_kokusai.friendskennsaku"
-        android:label="" />
+        android:label="友達検索" />
 
 
 </navigation>

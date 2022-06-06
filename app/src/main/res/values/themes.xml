@@ -5,7 +5,7 @@
 
 
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#F7F7FF</item>
+        <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
@@ -18,14 +18,6 @@
 
         <!-- アプリバーの戻る矢印の色を変更する。 -->
         <item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item>
-
-
-
-        <!-- アプリバーとfragment間の影をなくす -->
-        <item name = "android:stateListAnimator">@null</item>
-        <item name="android:elevation">0dp</item>
-
-
 
 
         <!-- Status bar color. -->

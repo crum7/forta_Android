@@ -51,8 +51,8 @@ android:stateListAnimator="@null"
         android:background="#fff"
 
 
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"
+        app:itemTextColor="@drawable/bottom_navigation_item_state"
+        app:itemIconTint="@drawable/bottom_navigation_item_state"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_menu" />
 
