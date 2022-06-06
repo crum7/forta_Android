@@ -16,20 +16,30 @@
         android:background="#f7f7ff">
 
 
-        <ListView
-            android:id="@+id/list_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <ImageButton
             android:id="@+id/button"
-            android:layout_width="133dp"
-            android:layout_height="58dp"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:background="#F7F7FF"
+            android:src="@drawable/search_icon"
+            android:scaleType="fitCenter"
 
-            android:text="友達検索"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="411dp"
+            android:layout_height="837dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

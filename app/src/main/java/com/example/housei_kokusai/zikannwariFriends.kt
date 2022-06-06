@@ -52,7 +52,7 @@ class zikannwariFriends : Fragment() {
         navController=Navigation.findNavController(view)
         val user_name=Firebase.auth.currentUser?.displayName
         val list=requireActivity().findViewById<ListView>(R.id.list_view)
-        val button=requireActivity().findViewById<Button>(R.id.button)
+        val button=requireActivity().findViewById<ImageButton>(R.id.button)
 
 
 

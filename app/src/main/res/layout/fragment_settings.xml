@@ -63,8 +63,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/保存"
+                android:backgroundTint="#F7F7FF"
+                style="?android:attr/borderlessButtonStyle"
+                android:textColor="#00A1E9"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/changeName" />
+                app:layout_constraintTop_toBottomOf="@id/usertext" />
 
 
             <TextView
@@ -72,10 +76,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:text="誰に見られてるか"
+                android:text="閲覧者"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/save_button_name" />
+                app:layout_constraintTop_toBottomOf="@+id/changeName" />
 
 
 
@@ -93,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:text="ブロックした人"
+                android:text="ブロック中"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/list_dare" />
