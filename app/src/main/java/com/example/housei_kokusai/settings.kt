@@ -404,7 +404,7 @@ class settings : Fragment() {
 
 
                         //real_name
-                        val Bundle_blo = name_who[position]
+                        //val Bundle_blo = name_who[position]
 
 
 
@@ -424,11 +424,22 @@ class settings : Fragment() {
                                 )
 
 
-                                //block_listからブロックされた人を消す。
+
                                 db.collection("users_profile").document(user_name).collection("block_list").document(name_who_blo_swipe)
-                                    .delete()
-                                    .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
-                                    .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+                                    .get()
+                                    .addOnSuccessListener { result ->
+                                        var partner_real_name = result.id
+
+                                        //block_listからブロックされた人を消す。
+                                        //nameho_blo_swipeは、real_name2_blo_swipe[]
+                                        db.collection("users_profile").document(user_name).collection("block_list").document(partner_real_name)
+                                            .delete()
+                                            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+                                            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+                                    }
+
+
+
                             }
 
 
