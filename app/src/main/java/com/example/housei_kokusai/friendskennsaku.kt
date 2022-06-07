@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.ktx.firestore
@@ -57,6 +58,200 @@ class friendskennsaku : Fragment(){
         var my_virtual_name = ""
         var my_block_name = ""
         var kore = ""
+
+
+
+
+        //swipe処理
+        val kennsaku_SwipeRefreshLayout=view.findViewById<SwipeRefreshLayout>(R.id.kennsaku_SwipeRefreshLayout)
+        // リストを下にスワイプされたら更新処理を実行
+        kennsaku_SwipeRefreshLayout.setOnRefreshListener {
+
+
+
+            var display_name_swipe = arrayListOf("")
+            var real_name_swipe = arrayListOf("")
+            var name_swipe = arrayListOf("")
+            var my_virtual_name_swipe = ""
+            var my_block_name_swipe = ""
+            var kore_swipe = ""
+
+
+            //ListViewの初期化
+            val adapter_swipe = ArrayAdapter<String>(
+                requireContext() ,
+                android.R.layout.simple_list_item_1 ,
+                display_name_swipe//本番環境ではhyouzi_array
+            )
+
+
+            list.setAdapter(adapter_swipe)
+
+
+
+            //自分のユーザーネーム
+            db.collection("users_profile").document(user_name.toString())
+                .get()
+                .addOnSuccessListener { result_name ->
+                    my_virtual_name_swipe = result_name.data.toString().replace(Regex("[={}*]") , "").replace("display_name","")
+
+                }
+
+            //自分がブロックした人を検索リストから消すために、ブロックした人の名前をblock_listから取得する。
+            db.collection("users_profile").document(user_name.toString()).collection("block_list")
+                .get()
+                .addOnSuccessListener { result ->
+
+                    for (document in result) {
+
+                        db.collection("users_profile").document(document.id)
+                            .get()
+                            .addOnSuccessListener { result ->
+                                my_block_name_swipe = result.data.toString().replace(Regex("[={}*]") , "").replace("display_name","")
+
+                            }
+                    }
+                }
+
+
+
+
+
+
+
+
+            db.collection("users_profile")
+                .get()
+                .addOnSuccessListener { result ->
+
+                    for (document in result) {
+                        Log.d(TAG , "${document.id} => ${document.data}")
+
+                        name_swipe.add(document.data.toString())
+                        kore_swipe = document.data.toString()
+
+
+                        val tokusyu = kore_swipe.replace(Regex("[={}*]") , "").replace("display_name","")
+
+
+                        //データ読み取り
+
+
+                        //配列にする
+                        display_name_swipe.add(tokusyu)
+                        real_name_swipe.add(document.id)
+
+                        //自分の名前とブロックした人の名前を削除
+                        // ここで多分real_name[postion]との数字の関連性が取れなくなっててエラーで落ちる。なんとかしろ
+                        display_name_swipe.remove(my_virtual_name)
+                        display_name_swipe.remove(my_block_name)
+
+
+
+                        //real_nameは自分のメールアドレスの先頭の文字が含まれているのでそれを消す。
+                        real_name_swipe.remove(user_name.toString())
+
+
+                    }
+                    //ListViewで表示
+                    val adapter_swipe = ArrayAdapter<String>(
+                        requireContext() ,
+                        android.R.layout.simple_list_item_1 ,
+                        display_name_swipe//本番環境ではhyouzi_array
+                    )
+
+
+                    list.setAdapter(adapter_swipe)
+
+                }
+
+
+
+
+
+            //Listviewの表をクリックしたときの動作
+            list.setOnItemClickListener { adapterView , view , position , id ->
+                //safe argsによる　friendsからFriendsDetailにデータ渡し
+                //https://qiita.com/m-coder/items/3a8e66d49f2830b09bf4
+                //real_nameには、ユーザーネームが配列で格納されているのでそれをpositionで設定してる
+                //Toast.makeText(context , real_name[position] , Toast.LENGTH_SHORT).show()
+
+                //real_name
+                val Bundle = real_name_swipe[position]
+
+
+
+
+
+                //友達登録するか否かのダイアログ表示
+                AlertDialog.Builder(requireActivity())
+                    .setTitle(display_name_swipe[position])
+                    .setMessage("友達登録しますか？")
+
+
+
+                    //OKボタン
+                    .setPositiveButton("OK") { dialog , which ->
+
+                        val admit_friends=hashMapOf(
+                            "name" to display_name_swipe[position] ,
+                        )
+
+                        val watch_by = hashMapOf(
+                            "name" to my_virtual_name_swipe,
+                        )
+
+
+                        //admit_friendsに友達の名前を追記する
+                        db.collection("users_profile").document("$user_name")
+                            .collection("admit_friends").document(real_name_swipe[position+1]).set(admit_friends)
+
+
+                        //users_profileの友達のwatch_byに追記する
+                        db.collection("users_profile").document(real_name_swipe[position+1])
+                            .collection("watch_by").document(user_name.toString()).set(watch_by)
+
+                    }
+
+                    //NOボタン
+                    .setNegativeButton("No", { dialog, which ->
+                        // TODO:Noが押された時の挙動
+                    })
+
+                    .show()
+
+
+            }
+            //クルクル止める
+            kennsaku_SwipeRefreshLayout.setRefreshing(false)
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

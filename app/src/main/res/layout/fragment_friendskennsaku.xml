@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/kennsaku_SwipeRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".zikannwariFriends"
-    android:background="#f7f7ff"
-    >
+    tools:context=".settings"
+    android:background="#f7f7ff">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,4 +41,4 @@
 
 
 
-</FrameLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
