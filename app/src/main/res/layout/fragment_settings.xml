@@ -60,7 +60,9 @@
                 android:hint="新しいユーザー名"
                 android:inputType="text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nowname_txt" />
+                app:layout_constraintTop_toBottomOf="@id/nowname_txt"
+                android:digits="abcdefghijklmnopqrstuvwxyz0123456789"
+                />
 
 
             <Button

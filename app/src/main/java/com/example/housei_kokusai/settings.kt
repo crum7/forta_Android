@@ -77,7 +77,7 @@ class settings : Fragment() {
         //自分の名前
         val user_name=Firebase.auth.currentUser?.displayName.toString()
 
-        val changeName=requireActivity().findViewById<EditText>(R.id.changeName)
+
         val nowname=requireActivity().findViewById<TextView>(R.id.nowname)
         val dare=requireActivity().findViewById<ListView>(R.id.list_dare)
         val block=requireActivity().findViewById<ListView>(R.id.list_block)
@@ -85,27 +85,47 @@ class settings : Fragment() {
 
         //誰が自分の時間割を見ているか用
         var name2=""
-        var display_name=arrayListOf("")
-        var real_name2=arrayListOf("")
-        var name_array=arrayListOf("")
+        var display_name=arrayListOf("}")
+        var real_name2=arrayListOf("}")
+        var name_array=arrayListOf("}")
 
 
         //自分がブロックした人
-        var display_name_blo=arrayListOf("")
-        var real_name2_blo=arrayListOf("")
-        var name_array_blo=arrayListOf("")
+        var display_name_blo=arrayListOf("}")
+        var real_name2_blo=arrayListOf("}")
+        var name_array_blo=arrayListOf("}")
 
 
         var name_who=""
         var name_who_blo=""
 
 
+        //Listの一番上が空白にならないようにする。
+        display_name.remove("}")
+        real_name2.remove("}")
+        name_array.remove("}")
+        display_name_blo.remove("}")
+        real_name2_blo.remove("}")
+        name_array_blo.remove("}")
+
+
+
+
+
+
+
+
+
+
+
+
         //名前変更
         val button=view.findViewById<Button>(R.id.save_button_name)
+        val changeName=requireActivity().findViewById<EditText>(R.id.changeName)
+
 
 
         button.setOnClickListener {
-
 
             val willName=changeName.text.toString()
 
@@ -171,20 +191,29 @@ class settings : Fragment() {
         mySwipeRefreshLayout.setOnRefreshListener {
             //誰が自分の時間割を見ているか用
             var name2_swipe=""
-            var display_name_swipe=arrayListOf("")
-            var real_name2_swipe=arrayListOf("")
-            var name_array_swipe=arrayListOf("")
+            var display_name_swipe=arrayListOf("}")
+            var real_name2_swipe=arrayListOf("}")
+            var name_array_swipe=arrayListOf("}")
 
 
             //自分がブロックした人
-            var display_name_blo_swipe=arrayListOf("")
-            var real_name2_blo_swipe=arrayListOf("")
-            var name_array_blo_swipe=arrayListOf("")
+            var display_name_blo_swipe=arrayListOf("}")
+            var real_name2_blo_swipe=arrayListOf("}")
+            var name_array_blo_swipe=arrayListOf("}")
 
 
             var name_who_swipe=""
             var name_who_blo_swipe=""
 
+            display_name_swipe.remove("}")
+            real_name2_swipe.remove("}")
+            name_array_swipe.remove("}")
+
+
+            //自分がブロックした人
+            display_name_blo_swipe.remove("}")
+            real_name2_blo_swipe.remove("}")
+            name_array_blo_swipe.remove("}")
 
 
 

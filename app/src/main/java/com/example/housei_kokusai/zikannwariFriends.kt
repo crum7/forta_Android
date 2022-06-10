@@ -60,8 +60,8 @@ class zikannwariFriends : Fragment() {
         var name2 = ""
 
         var tokusyu=""
-        var display_name=arrayListOf("")
-        var real_name=arrayListOf("")
+        var display_name=arrayListOf("}")
+        var real_name=arrayListOf("}")
 
 
 
@@ -104,7 +104,8 @@ class zikannwariFriends : Fragment() {
 
 
 
-
+                            display_name.remove("}")
+                            real_name.remove("}")
 
 
 
