@@ -26,10 +26,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="ユーザー名設定"
+        android:textSize="20sp"
         android:gravity="center"
-        android:stateListAnimator="@null"
-
-        />
+        android:background="@drawable/kadomaru"
+        app:backgroundTint="@null">
+    </Button>
 
 
 
@@ -60,9 +61,11 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:text="友達確認"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/white"
-        android:stateListAnimator="@null"
+        android:background="@drawable/kadomaru"
+        app:backgroundTint="@null"
         />
 
         <TextView
@@ -74,26 +77,6 @@
         android:text="自分が友達登録した人を見ることができます。"
         android:gravity="center"
         />
-
-        <TextView
-            android:id="@+id/white2"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/時間割登録英語"
-
-            android:gravity="center"
-            />
-
-        <Button
-            android:id="@+id/zyugyouzikann"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="@string/授業時間"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/white2"
-            android:stateListAnimator="@null"
-            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

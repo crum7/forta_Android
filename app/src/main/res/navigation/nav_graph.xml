@@ -11,14 +11,12 @@
         android:label="総合"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_home_to_zyugyouzikann2"
-            app:destination="@id/zyugyouzikann2" />
+            android:id="@+id/action_home_to_settings_name"
+            app:destination="@id/settings_name" />
         <action
-            android:id="@+id/action_home_to_settings2"
-            app:destination="@id/settings2" />
-        <action
-            android:id="@+id/action_home_to_zikannwariFriends2"
-            app:destination="@id/zikannwariFriends" />
+            android:id="@+id/action_home_to_settings_friends"
+            app:destination="@id/settings_friends" />
+
     </fragment>
 
 
@@ -29,11 +27,6 @@
         tools:layout="@layout/fragment_touroku_manday" />
 
 
-    <fragment
-        android:id="@+id/zyugyouzikann2"
-        android:name="com.example.housei_kokusai.zyugyouzikann"
-        android:label="@string/時間割"
-        tools:layout="@layout/fragment_zyugyouzikann" />
     <fragment
         android:id="@+id/login2"
         android:name="com.example.housei_kokusai.login"
@@ -90,14 +83,18 @@
 
 
     <fragment
-        android:id="@+id/settings2"
-        android:name="com.example.housei_kokusai.settings"
-        android:label="設定"
-        tools:layout="@layout/fragment_settings" />
-    <fragment
         android:id="@+id/friendskennsaku"
         android:name="com.example.housei_kokusai.friendskennsaku"
         android:label="友達検索" />
+
+    <fragment
+        android:id="@+id/settings_name"
+        android:name="com.example.housei_kokusai.settings_name"
+        android:label="settings_name" />
+    <fragment
+        android:id="@+id/settings_friends"
+        android:name="com.example.housei_kokusai.settings_friends"
+        android:label="settings_friends" />
 
 
 </navigation>

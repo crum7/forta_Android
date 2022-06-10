@@ -48,7 +48,6 @@ class home:Fragment() ,View.OnClickListener{
 
         view.findViewById<Button>(R.id.settings_move).setOnClickListener(this)
         view.findViewById<Button>(R.id.touroku_button).setOnClickListener(this)
-        view.findViewById<Button>(R.id.zyugyouzikann).setOnClickListener(this)
 
 
 
@@ -61,9 +60,8 @@ class home:Fragment() ,View.OnClickListener{
     override fun onClick(v: View?) {
         when(v!!.id){
 
-            R.id.settings_move-> navController!!.navigate(R.id.action_home_to_settings2)
-            R.id.zyugyouzikann -> navController!!.navigate(R.id.action_home_to_zyugyouzikann2)
-            R.id.touroku_button-> navController!!.navigate(R.id.action_home_to_zikannwariFriends2)
+            R.id.settings_move-> navController!!.navigate(R.id.action_home_to_settings_name)
+            R.id.touroku_button -> navController!!.navigate(R.id.action_home_to_settings_friends)
 
 
 

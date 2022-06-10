@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    android:id="@+id/settings_SwipeRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".settings_name"
+    android:background="#f7f7ff">
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/usertext"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="ユーザー名変更"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nowname_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="現在の名前："
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/usertext"
+
+            />
+
+        <TextView
+            android:id="@+id/nowname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/nowname_txt"
+            app:layout_constraintTop_toBottomOf="@id/usertext" />
+
+
+
+
+        <EditText
+            android:id="@+id/changeName"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:hint="新しいユーザー名"
+            android:inputType="text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nowname_txt"
+            android:digits="abcdefghijklmnopqrstuvwxyz0123456789"
+            />
+
+
+        <Button
+            android:id="@+id/save_button_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/保存"
+            android:backgroundTint="#F7F7FF"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="#00A1E9"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/usertext" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</FrameLayout>
+
+
+
