@@ -91,7 +91,7 @@ class zikannwariFriends : Fragment() {
 
                             val adapter=ArrayAdapter<String>(
                                 requireContext() ,
-                                android.R.layout.simple_list_item_1 ,
+                                android.R.layout.simple_list_item_2,
                                 display_name//本番環境ではhyouzi_array
                             )
 

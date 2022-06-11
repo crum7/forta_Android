@@ -4,9 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.46944444444444444" />
+        <entry key="app/src/main/res/drawable-v24/home_no_button.xml" value="0.1765" />
         <entry key="app/src/main/res/drawable/border.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bottom_navigation_item_state.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/button_layout.xml" value="0.1765" />
         <entry key="app/src/main/res/drawable/english.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/home_no_button.xml" value="0.1765" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.1" />
@@ -17,8 +20,10 @@
         <entry key="app/src/main/res/drawable/other.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/science.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/socieal.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/user_settings_icon.xml" value="0.174" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/border.xml" value="0.14457831325301204" />
+        <entry key="app/src/main/res/layout/button_layout.xml" value="0.30782385634886705" />
         <entry key="app/src/main/res/layout/custom_spinner.xml" value="0.14457831325301204" />
         <entry key="app/src/main/res/layout/fragment_friendskennsaku.xml" value="0.2975630611372381" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.375" />

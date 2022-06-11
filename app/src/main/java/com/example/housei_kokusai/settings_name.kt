@@ -79,9 +79,15 @@ class settings_name : Fragment() {
 
 
         val nowname=requireActivity().findViewById<TextView>(R.id.nowname)
-        val dare=requireActivity().findViewById<ListView>(R.id.list_dare)
-        val block=requireActivity().findViewById<ListView>(R.id.list_block)
 
+
+        db.collection("users_profile").document(user_name)
+            .get()
+            .addOnSuccessListener { result ->
+                nowname.setText(result.data.toString().replace(Regex("[={}*]") , "")
+                    .replace("display_name" , ""))
+
+            }
 
 
 
