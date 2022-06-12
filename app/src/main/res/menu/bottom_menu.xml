@@ -23,8 +23,4 @@
         android:icon="@drawable/ic_person" />
 
 
-    <item
-        android:id="@+id/settings2"
-        android:title=""
-        android:icon="@drawable/ic_settings"/>
 </menu>
