@@ -51,6 +51,8 @@ class friendskennsaku : Fragment(){
         navController = Navigation.findNavController(view)
         val user_name = Firebase.auth.currentUser?.displayName
         val list = requireActivity().findViewById<ListView>(R.id.list_view_kennsaku)
+        val search_list = requireActivity().findViewById<ListView>(R.id.search_list)
+
 
         var display_name = arrayListOf("")
         var real_name = arrayListOf("")
@@ -264,21 +266,27 @@ class friendskennsaku : Fragment(){
 
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
+
             // 入力テキストに変更があったとき
             override fun onQueryTextChange(newText: String): Boolean {
-                if (newText.isNullOrBlank()) {
-                    list.clearTextFilter()
+                list.clearTextFilter()
+                display_name = arrayListOf("")
+                real_name = arrayListOf("")
+                if (newText.isBlank()) {
+
                 } else {
                     list.setFilterText(newText)
                 }
                 // text changed
+                display_name.add(newText)
                 return false
+
             }
 
 
             // 検索ボタンを押したとき
             override fun onQueryTextSubmit(query: String): Boolean {
-                // submit button pressed
+                Toast.makeText(requireContext() , query , Toast.LENGTH_SHORT).show()
                 return false
             }
         })
@@ -309,7 +317,7 @@ class friendskennsaku : Fragment(){
                         .get()
                         .addOnSuccessListener { result ->
                             my_block_name = result.data.toString().replace(Regex("[={}*]") , "").replace("display_name","")
-                            Toast.makeText(requireContext() , my_block_name , Toast.LENGTH_SHORT).show()
+                            //Toast.makeText(requireContext() , my_block_name , Toast.LENGTH_SHORT).show()
                         }
                 }
             }
@@ -381,7 +389,7 @@ class friendskennsaku : Fragment(){
             val Bundle = real_name[position]
 
 
-            Toast.makeText(requireContext() , real_name[position+1] , Toast.LENGTH_SHORT).show()
+            //Toast.makeText(requireContext() , real_name[position+1] , Toast.LENGTH_SHORT).show()
 
 
 

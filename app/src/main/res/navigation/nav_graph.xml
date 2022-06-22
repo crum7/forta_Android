@@ -33,22 +33,11 @@
         android:label="ログイン"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_login2_to_login_ad2"
-            app:destination="@id/login_ad" />
-        <action
             android:id="@+id/action_login2_to_firsttime"
             app:destination="@id/firsttime" />
-    </fragment>
-    <fragment
-        android:id="@+id/login_ad"
-        android:name="login_ad"
-        android:label="ログイン確認" >
         <action
-            android:id="@+id/action_login_ad_to_home2"
-            app:destination="@id/home" />
-        <action
-            android:id="@+id/action_login_ad_to_login2"
-            app:destination="@id/login2" />
+            android:id="@+id/action_login2_to_tourokuManday"
+            app:destination="@id/tourokuManday" />
     </fragment>
 
 
@@ -102,7 +91,11 @@
         android:id="@+id/firsttime"
         android:name="com.example.housei_kokusai.firsttime"
         android:label="fragment_firsttime"
-        tools:layout="@layout/fragment_firsttime" />
+        tools:layout="@layout/fragment_firsttime" >
+        <action
+            android:id="@+id/action_firsttime_to_tourokuManday"
+            app:destination="@id/tourokuManday" />
+    </fragment>
 
 
 </navigation>

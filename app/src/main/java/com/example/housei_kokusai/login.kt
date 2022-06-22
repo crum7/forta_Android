@@ -151,12 +151,12 @@ class login : Fragment() {
         if(countTime == 1 && currentUser != null){
 
             findNavController().navigate(R.id.action_login2_to_firsttime)
-            Toast.makeText(requireActivity() , "OKOKOKOK" , Toast.LENGTH_SHORT).show()
+
 
 
         }else if (currentUser != null) {
             // If currentUser != null, let's go to the next screen
-            findNavController().navigate(R.id.action_login2_to_login_ad2)
+            findNavController().navigate(R.id.action_login2_to_tourokuManday)
         } else {
             // If the user hasn't already declined to use One Tap sign-in
             if (!userDeclinedOneTap) {

@@ -46,6 +46,13 @@ class MainActivity : AppCompatActivity() {
 
         //navigationコンポーネントの宣言
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+
+
+        //特定のフラグメントのときにbottom_menuとtoolbarを消す。
+
+
+
+
         navController = navHostFragment.findNavController()
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -61,27 +68,45 @@ class MainActivity : AppCompatActivity() {
 
         val buttomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navController = findNavController(R.id.nav_host_fragment)
+
+
+        //login2とfirsttimeでは、bottom_menuとtoolbarを消す
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            toolbar.visibility = if(destination.id == R.id.login2 || destination.id == R.id.firsttime) View.GONE else View.VISIBLE
+            buttomNavigationView.visibility = if(destination.id == R.id.login2 || destination.id == R.id.firsttime) View.GONE else View.VISIBLE
+        }
+
+
+
+
+
+
+
+
         buttomNavigationView.setupWithNavController(navController)
 
 
 
 
-        //アプリの起動回数把握
+        //アプリの起動回数把握        ここは、login.ktとも密接に関わってるから消したらだめ-----------------------------------------------------------------
         val launch_count = getSharedPreferences("ファイル名" , Context.MODE_PRIVATE)
         var countTime = launch_count.getInt("Count" , 0)
         countTime++
+
         launch_count.edit().putInt("Count",countTime).apply()
 
         //初回時にやることを書く
         if(countTime ==1){
 
-            //bottom_menuとtoolbarを消す。
-            buttomNavigationView.visibility = View.GONE
-            toolbar.visibility = View.GONE
+
+
 
 
 
         }
+
+
+
 
 
     }

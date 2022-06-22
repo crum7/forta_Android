@@ -7,7 +7,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".settings"
+    tools:context=".friendskennsaku"
     android:background="#f7f7ff">
 
 
@@ -35,6 +35,15 @@
             android:layout_height="832dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/search_bar" />
+
+        <ListView
+            android:id="@+id/search_list"
+            android:layout_width="411dp"
+            android:layout_height="832dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_bar" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
