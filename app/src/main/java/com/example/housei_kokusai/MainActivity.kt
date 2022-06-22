@@ -1,40 +1,22 @@
 package com.example.housei_kokusai
 
-import android.content.ContentValues.TAG
-import android.content.Intent
-import android.content.IntentSender
-import android.graphics.Color.BLUE
-import android.graphics.Color.WHITE
-import android.graphics.drawable.ColorDrawable
-import android.hardware.camera2.params.RggbChannelVector.BLUE
-import android.net.Uri
+
+import android.content.Context
 import android.os.Bundle
-import android.text.Html
-import com.google.firebase.firestore.ktx.firestore
-import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
-import com.google.android.gms.auth.api.identity.Identity
-import com.google.android.gms.auth.api.identity.SignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.common.api.ApiException
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.analytics.ktx.analytics
-import com.google.type.Color
-
-
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 //全ての処理をfragmentに任せる
 //左上の”戻る”ボタンもここで管理している。 ↓
@@ -80,6 +62,28 @@ class MainActivity : AppCompatActivity() {
         val buttomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navController = findNavController(R.id.nav_host_fragment)
         buttomNavigationView.setupWithNavController(navController)
+
+
+
+
+        //アプリの起動回数把握
+        val launch_count = getSharedPreferences("ファイル名" , Context.MODE_PRIVATE)
+        var countTime = launch_count.getInt("Count" , 0)
+        countTime++
+        launch_count.edit().putInt("Count",countTime).apply()
+
+        //初回時にやることを書く
+        if(countTime ==1){
+
+            //bottom_menuとtoolbarを消す。
+            buttomNavigationView.visibility = View.GONE
+            toolbar.visibility = View.GONE
+
+
+
+        }
+
+
     }
 
 

@@ -1,68 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<FrameLayout
-    android:id="@+id/settings_SwipeRefreshLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".settings_name"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".firsttime"
     android:background="#f7f7ff">
 
 
 
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
 
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="fortaへようこそ"
+        android:gravity="center"
+        android:textSize="45sp"/>
 
-
-
+    <TextView
+        android:id="@+id/first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1. まずは,ユーザーネームを設定しましょう。"
+        android:textSize="@dimen/browser_actions_context_menu_min_padding"
+        app:layout_constraintTop_toBottomOf="@id/welcome"
+        android:paddingTop="40sp"
+        app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
-            android:id="@+id/usertext"
+            android:id="@+id/first_add"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="ユーザー名変更"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/nowname_txt"
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="現在の名前："
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/usertext"
-
-            />
-
-        <TextView
-            android:id="@+id/nowname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            app:layout_constraintStart_toEndOf="@+id/nowname_txt"
-            app:layout_constraintTop_toBottomOf="@id/usertext" />
+            android:text="友達があなたを認識するために使用され、何度でも変更できます。"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@id/first"
+            android:paddingTop="10sp"
+            app:layout_constraintStart_toStartOf="parent"/>
 
 
 
 
         <EditText
-            android:id="@+id/changeName"
+            android:id="@+id/changeName_first"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:hint="新しいユーザー名"
+            android:hint="自分のユーザー名"
             android:inputType="text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nowname_txt"
+            app:layout_constraintTop_toBottomOf="@id/first_add"
+            android:paddingTop="30sp"
+
             android:maxLength="10"
             android:maxLines="1"
+
             android:digits="
 abcdefghijklmnopqrstuvwxyz
 0123456789
@@ -143,7 +144,7 @@ abcdefghijklmnopqrstuvwxyz
 
 
         <Button
-            android:id="@+id/save_button_name"
+            android:id="@+id/save_button_name_first"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/保存"
@@ -152,15 +153,122 @@ abcdefghijklmnopqrstuvwxyz
             android:textColor="#00A1E9"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/usertext" />
+            android:paddingTop="30sp"
+            app:layout_constraintTop_toBottomOf="@id/first_add" />
+
+
+
+        <TextView
+            android:id="@+id/second"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. 自分の時間割を設定しましょう。"
+            android:textSize="@dimen/browser_actions_context_menu_min_padding"
+            app:layout_constraintTop_toBottomOf="@id/save_button_name_first"
+            android:paddingTop="40sp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/second_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="友達はあなたが登録した時間割を見ることが出来ます。"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@id/second"
+            android:paddingTop="10sp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+
+
+        <ImageView
+            android:id="@+id/gifView1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/second_add"
+            android:contentDescription="時間割の設定の説明" />
+
+
+
+
+
+        <TextView
+            android:id="@+id/third"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. 友達の時間割を見てみましょう"
+            android:textSize="@dimen/browser_actions_context_menu_min_padding"
+            app:layout_constraintTop_toBottomOf="@id/gifView1"
+            android:paddingTop="40sp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+        <TextView
+            android:id="@+id/third_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="友達の検索、追加、時間割を見ることが出来ます。"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@id/third"
+            android:paddingTop="10sp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/gifView2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/third_add"
+            android:contentDescription="友達の時間割の見方" />
+
+
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/forth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4. 各種設定"
+            android:textSize="@dimen/browser_actions_context_menu_min_padding"
+            app:layout_constraintTop_toBottomOf="@id/gifView2"
+            android:paddingTop="40sp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/forth_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="友達以外に見られていたらブロック。ユーザー名変更もここから。"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@id/forth"
+            android:paddingTop="10sp"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <ImageView
+            android:id="@+id/gifView3"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/forth_add"
+            android:contentDescription="各種設定の仕方" />
+
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gifView3"
+            android:background="@drawable/kadomaru"
+            app:backgroundTint="@null"
+            android:text="早速使う"/>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
+    </ScrollView>
 </FrameLayout>
-
-
-

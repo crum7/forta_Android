@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_login2_to_login_ad2"
             app:destination="@id/login_ad" />
+        <action
+            android:id="@+id/action_login2_to_firsttime"
+            app:destination="@id/firsttime" />
     </fragment>
     <fragment
         android:id="@+id/login_ad"
@@ -95,6 +98,11 @@
         android:id="@+id/settings_friends"
         android:name="com.example.housei_kokusai.settings_friends"
         android:label="友達確認" />
+    <fragment
+        android:id="@+id/firsttime"
+        android:name="com.example.housei_kokusai.firsttime"
+        android:label="fragment_firsttime"
+        tools:layout="@layout/fragment_firsttime" />
 
 
 </navigation>

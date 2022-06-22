@@ -3,6 +3,7 @@ package com.example.housei_kokusai
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.net.Uri
@@ -42,7 +43,7 @@ import com.google.firebase.ktx.Firebase
 const val RC_SIGN_IN = 123
 const val RC_ONE_TAP = 124
 
-
+var navController: NavController? = null
 
 class login : Fragment() {
 
@@ -76,8 +77,17 @@ class login : Fragment() {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
+
+
+
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
 
         //inputEmail = view.findViewById(R.id.tilEmail)
         //inputPassword = view.findViewById(R.id.tilPassword)
@@ -127,7 +137,24 @@ class login : Fragment() {
     }
 
     private fun updateUI(currentUser: FirebaseUser?) {
-        if (currentUser != null) {
+
+
+
+        //アプリの起動回数把握
+        val launch_count = requireActivity().getSharedPreferences("ファイル名" , Context.MODE_PRIVATE)
+        var countTime = launch_count.getInt("Count" , 0)
+        countTime = countTime++
+        launch_count.edit().putInt("Count",countTime).apply()
+
+
+        //初回時にやることを書く
+        if(countTime == 1 && currentUser != null){
+
+            findNavController().navigate(R.id.action_login2_to_firsttime)
+            Toast.makeText(requireActivity() , "OKOKOKOK" , Toast.LENGTH_SHORT).show()
+
+
+        }else if (currentUser != null) {
             // If currentUser != null, let's go to the next screen
             findNavController().navigate(R.id.action_login2_to_login_ad2)
         } else {
