@@ -90,11 +90,11 @@
     <fragment
         android:id="@+id/settings_name"
         android:name="com.example.housei_kokusai.settings_name"
-        android:label="settings_name" />
+        android:label="ユーザー名設定" />
     <fragment
         android:id="@+id/settings_friends"
         android:name="com.example.housei_kokusai.settings_friends"
-        android:label="settings_friends" />
+        android:label="友達確認" />
 
 
 </navigation>

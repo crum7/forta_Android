@@ -114,6 +114,7 @@ class settings_name : Fragment() {
                 )
 
 
+
             //自分のところのdisplay_nameの更新
             db.collection("users_profile").document("$user_name")
                 .update(custom_name as Map<String , Any>)
