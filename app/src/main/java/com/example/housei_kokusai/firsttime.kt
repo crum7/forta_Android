@@ -86,9 +86,15 @@ class firsttime : Fragment() ,View.OnClickListener {
             val gifView3=view.findViewById<ImageView>(R.id.gifView3)
 
 
-            val gifMovie1: Int=R.raw.test
-            // gif画像のセット
-            Glide.with(this).load(gifMovie1).into(gifView1)
+        val gifMovie1: Int=R.raw.test
+        val gifMovie2: Int=R.raw.test
+        val gifMovie3: Int=R.raw.test
+
+
+        // gif画像のセット
+        Glide.with(this).load(gifMovie1).into(gifView1)
+        Glide.with(this).load(gifMovie2).into(gifView2)
+        Glide.with(this).load(gifMovie3).into(gifView3)
 
 
         //ボタンで画面遷移

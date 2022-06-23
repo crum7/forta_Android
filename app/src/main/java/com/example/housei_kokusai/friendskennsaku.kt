@@ -51,7 +51,6 @@ class friendskennsaku : Fragment(){
         navController = Navigation.findNavController(view)
         val user_name = Firebase.auth.currentUser?.displayName
         val list = requireActivity().findViewById<ListView>(R.id.list_view_kennsaku)
-        val search_list = requireActivity().findViewById<ListView>(R.id.search_list)
 
 
         var display_name = arrayListOf("")

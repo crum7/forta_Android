@@ -36,6 +36,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView"
+            android:text="学校のメールアドレスでログインしてください。"
+            android:gravity="center"
+            android:textSize="15sp"
+
+            />
+
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/btnGoogleSignin"
