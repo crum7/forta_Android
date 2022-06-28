@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
 import androidx.core.os.bundleOf
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -51,6 +52,7 @@ class friendskennsaku : Fragment(){
         navController = Navigation.findNavController(view)
         val user_name = Firebase.auth.currentUser?.displayName
         val list = requireActivity().findViewById<ListView>(R.id.list_view_kennsaku)
+        val searchBar = view.findViewById<AutoCompleteTextView>(R.id.search_bar)
 
 
         var display_name = arrayListOf("")
@@ -86,6 +88,7 @@ class friendskennsaku : Fragment(){
             )
 
 
+            searchBar.setAdapter(adapter_swipe)
             list.setAdapter(adapter_swipe)
 
 
@@ -162,6 +165,7 @@ class friendskennsaku : Fragment(){
                     )
 
 
+                    searchBar.setAdapter(adapter_swipe)
                     list.setAdapter(adapter_swipe)
 
                 }
@@ -246,49 +250,123 @@ class friendskennsaku : Fragment(){
 
 
 
+        //検索したときの挙動-----------------------------------------------------
+        searchBar.setOnFocusChangeListener{ v, hasFocus ->
+
+        if (hasFocus){
+            list.isTextFilterEnabled = true
+            list.setFilterText(" ")
+        }
+        }
+
+
+        searchBar.setOnItemClickListener { aaaaa, view, i, l ->
+            val searchedName = aaaaa.getItemAtPosition(i) as String
+
+            list.isTextFilterEnabled = true
+            list.setFilterText(" ")
 
 
 
 
+            //自分のユーザーネーム
+            db.collection("users_profile").document(user_name.toString())
+                .get()
+                .addOnSuccessListener { result_name ->
+                    val my_virtual_name = result_name.data.toString().replace(Regex("[={}*]") , "").replace("display_name","")
 
-
-
-
-
-
-        // テキストフィルターを有効にする
-        list.isTextFilterEnabled = true
-
-
-        //検索ボタン
-        val searchBar = view.findViewById<SearchView>(R.id.search_bar)
-
-        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
-
-            // 入力テキストに変更があったとき
-            override fun onQueryTextChange(newText: String): Boolean {
-                list.clearTextFilter()
-                display_name = arrayListOf("")
-                real_name = arrayListOf("")
-                if (newText.isBlank()) {
-
-                } else {
-                    list.setFilterText(newText)
                 }
-                // text changed
-                display_name.add(newText)
-                return false
-
-            }
 
 
-            // 検索ボタンを押したとき
-            override fun onQueryTextSubmit(query: String): Boolean {
-                Toast.makeText(requireContext() , query , Toast.LENGTH_SHORT).show()
-                return false
-            }
-        })
+            //友達登録するか否かのダイアログ表示
+            AlertDialog.Builder(requireActivity())
+                .setTitle(searchedName)
+                .setMessage("友達登録しますか？")
+
+
+
+
+
+                //OKボタン
+                .setPositiveButton("OK") { dialog , which ->
+
+                    val admit_friends=hashMapOf(
+                        "name" to searchedName,
+                    )
+
+                    val watch_by = hashMapOf(
+                        "name" to my_virtual_name,
+                    )
+
+
+
+                    //相手のrealNameがわかってない
+                    db.collection("users_profile")
+                        .get()
+                        .addOnSuccessListener{ real_name_searched ->
+                            for (document in real_name_searched) {
+
+
+                                val data = document.data.toString().replace(Regex("[={}*]"),"").replace("display_name","")
+                                if( data == searchedName )
+                                {
+                                    val real_name_searched_ans = document.id
+                                    //Toast.makeText(requireContext() , real_name_searched_ans , Toast.LENGTH_SHORT).show()
+
+                                    //admit_friendsに友達の名前を追記する
+                                    db.collection("users_profile").document("$user_name")
+                                        .collection("admit_friends").document(real_name_searched_ans).set(admit_friends)
+
+
+                                    //users_profileの友達のwatch_byに追記する
+                                    db.collection("users_profile").document(real_name_searched_ans)
+                                        .collection("watch_by").document(user_name.toString()).set(watch_by)
+                                }
+
+
+
+
+
+                            }
+
+
+                        }
+
+                }
+
+                //NOボタン
+                .setNegativeButton("No", { dialog, which ->
+                    // TODO:Noが押された時の挙動
+                })
+
+                .show()
+
+            //Toast.makeText(requireContext(), "$searchedName が現れた！", Toast.LENGTH_SHORT).show()
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -369,6 +447,7 @@ class friendskennsaku : Fragment(){
                 )
 
 
+                searchBar.setAdapter(adapter)
                 list.setAdapter(adapter)
 
             }

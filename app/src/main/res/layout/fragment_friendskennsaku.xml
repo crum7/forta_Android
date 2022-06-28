@@ -18,7 +18,7 @@
 
 
 
-        <SearchView
+        <AutoCompleteTextView
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,8 +26,9 @@
             app:layout_constraintTop_toTopOf="parent"
 
             android:iconifiedByDefault="false"
-            android:queryHint="検索"
-            />
+            android:hint="🔍検索"
+
+        tools:ignore="LabelFor" />
 
         <ListView
             android:id="@+id/list_view_kennsaku"
