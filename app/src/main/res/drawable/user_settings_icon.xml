@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <!--ここでwidth, heightを指定-->
     <item
-        android:width="45sp"
-        android:height="45sp"
+        android:width="45dp"
+        android:height="45dp"
         android:drawable="@drawable/clock"/>
 </layer-list>

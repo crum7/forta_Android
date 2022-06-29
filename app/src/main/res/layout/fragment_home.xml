@@ -76,7 +76,7 @@
         android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/touroku_button"
-        android:text="自分が友達登録した人を見ることができます。"
+        android:text="ブロックした友達、誰に見られているかをできます。"
         android:gravity="center"
         />
 
