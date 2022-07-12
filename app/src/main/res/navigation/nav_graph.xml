@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.example.housei_kokusai.home"
+        android:name="com.forta.housei_kokusai.home"
         android:label="総合"
         tools:layout="@layout/fragment_home" >
         <action
@@ -22,14 +22,14 @@
 
     <fragment
         android:id="@+id/tourokuManday"
-        android:name="com.example.housei_kokusai.tourokuManday"
+        android:name="com.forta.housei_kokusai.tourokuManday"
         android:label="時間割"
         tools:layout="@layout/fragment_touroku_manday" />
 
 
     <fragment
         android:id="@+id/login2"
-        android:name="com.example.housei_kokusai.login"
+        android:name="com.forta.housei_kokusai.login"
         android:label="ログイン"
         tools:layout="@layout/fragment_login" >
         <action
@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/zikannwariFriends"
-        android:name="com.example.housei_kokusai.zikannwariFriends"
+        android:name="com.forta.housei_kokusai.zikannwariFriends"
         android:label="友達"
         tools:layout="@layout/fragment_zikannwari_friends" >
 
@@ -66,7 +66,7 @@
 
     <fragment
         android:id="@+id/zikannwariFriendsDetail"
-        android:name="com.example.housei_kokusai.zikannwariFriendsDetail"
+        android:name="com.forta.housei_kokusai.zikannwariFriendsDetail"
         android:label="友達の時間割"
         tools:layout="@layout/fragment_zikannwari_friends_detail" />
         <argument
@@ -76,20 +76,20 @@
 
     <fragment
         android:id="@+id/friendskennsaku"
-        android:name="com.example.housei_kokusai.friendskennsaku"
+        android:name="com.forta.housei_kokusai.friendskennsaku"
         android:label="友達検索" />
 
     <fragment
         android:id="@+id/settings_name"
-        android:name="com.example.housei_kokusai.settings_name"
+        android:name="com.forta.housei_kokusai.settings_name"
         android:label="ユーザー名設定" />
     <fragment
         android:id="@+id/settings_friends"
-        android:name="com.example.housei_kokusai.settings_friends"
+        android:name="com.forta.housei_kokusai.settings_friends"
         android:label="友達確認" />
     <fragment
         android:id="@+id/firsttime"
-        android:name="com.example.housei_kokusai.firsttime"
+        android:name="com.forta.housei_kokusai.firsttime"
         android:label="fragment_firsttime"
         tools:layout="@layout/fragment_firsttime" >
         <action

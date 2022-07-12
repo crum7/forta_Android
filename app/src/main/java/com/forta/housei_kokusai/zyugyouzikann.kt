@@ -1,4 +1,4 @@
-package com.example.housei_kokusai
+package com.forta.housei_kokusai
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

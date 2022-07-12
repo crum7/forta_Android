@@ -1,4 +1,4 @@
-package com.example.housei_kokusai
+package com.forta.housei_kokusai
 
 import android.app.Activity
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import io.grpc.Context
 
 class MyAdapter (private val context: Activity, private val arrayList: ArrayList<admit_friends_name>) :
     ArrayAdapter<admit_friends_name>(context,R.layout.list_item_original,arrayList){

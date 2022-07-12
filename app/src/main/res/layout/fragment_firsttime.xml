@@ -266,7 +266,7 @@ abcdefghijklmnopqrstuvwxyz
             app:layout_constraintTop_toBottomOf="@id/gifView3"
             android:background="@drawable/kadomaru"
             app:backgroundTint="@null"
-            android:text="早速使う"/>
+            android:text="自分の時間割を登録"/>
 
 
 

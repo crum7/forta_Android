@@ -1,25 +1,16 @@
-package com.example.housei_kokusai
+package com.forta.housei_kokusai
 
 
-import android.content.Context
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.text.Html
-import com.example.housei_kokusai.R.id
+import com.forta.housei_kokusai.R.id
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
 import android.widget.Button
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import com.example.housei_kokusai.home as home
 
 
 //Fragmentを継承したclassを作る　これがなきゃ始まらない

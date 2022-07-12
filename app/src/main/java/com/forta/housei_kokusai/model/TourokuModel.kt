@@ -1,9 +1,8 @@
-package com.example.housei_kokusai.model
+package com.forta.housei_kokusai.model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.housei_kokusai.R
 
 class TourokuModel : ViewModel() {
 

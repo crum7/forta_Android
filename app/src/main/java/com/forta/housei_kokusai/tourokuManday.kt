@@ -1,24 +1,16 @@
-package com.example.housei_kokusai
+package com.forta.housei_kokusai
 
-import android.content.ContentValues.TAG
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.content.res.ResourcesCompat.getDrawable
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
-import com.example.housei_kokusai.R.drawable.border
-import com.google.firebase.auth.FirebaseAuth
+import com.forta.housei_kokusai.R.drawable.border
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -26,7 +18,7 @@ import com.google.firebase.ktx.Firebase
 
 
 //Fragmentを継承したclassを作る　これがなきゃ始まらない
-class tourokuManday_ad: Fragment() {
+class tourokuManday : Fragment() {
 
     var navController: NavController? = null
     val db = Firebase.firestore
@@ -41,7 +33,7 @@ class tourokuManday_ad: Fragment() {
 
     ): View? {
 //まずは、こいつでfragment_homeを表示する
-        return inflater.inflate(R.layout.fragment_touroku_manday_ad , container , false)
+        return inflater.inflate(R.layout.fragment_touroku_manday , container , false)
 
 
     }
@@ -178,57 +170,777 @@ class tourokuManday_ad: Fragment() {
 
 
 
-        val Getuyou1Items = arrayListOf("現代文B 111" , "日本史B 433" ,"数学Ⅱ発展 223","コミュ英Ⅱ 234","コミュ英Ⅲ 235","現代文A 112","現代社会 441" ,
-            "政治経済 432" ,"生物基礎 322","物理研究　332","体育","Intractive Engish 228","英文法Ⅰ　222", "英文法Ⅱ　214" ,"英文読解Ⅱ 216","スペイン語　215",
-            "韓国語　221","1C数学α 114","1F数学α 227" )
-        val Getuyou2Items = arrayListOf("古典B 111" , "日本史B 432" ,"日本史総合 433","数学Ⅱ基礎 227","数学Ⅲ 228","コミュ英Ⅱ 234","化学")
-        val Getuyou3Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Getuyou4Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Getuyou5Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Getuyou6Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
+        val Getuyou1Items = arrayListOf(
+            "空き" ,
+            "現代文B 111" ,
+            "日本史B 433" ,
+            "数学Ⅱ発展 223" ,
+            "コミュ英Ⅱ 234" ,
+            "コミュ英Ⅲ 235" ,
+            "現代文A 112" ,
+            "現代社会 441" ,
+            "政治経済 432" ,
+            "生物基礎 322" ,
+            "物理研究 332" ,
+            "体育" ,
+            "InteractiveEnglishⅠ 228" ,
+            "英文法Ⅰ　222" ,
+            "英文法Ⅱ 214" ,
+            "英文読解Ⅱ 216" ,
+            "スペイン語　215" ,
+            "韓国語　221" ,
+            "数学α 114" ,
+            "数学α 227"
+        )
+        val Getuyou2Items = arrayListOf(
+            "空き" ,
+            "現代文B 111" ,
+            "日本史B 433" ,
+            "数学Ⅱ発展 223" ,
+            "コミュ英Ⅲ 235" ,
+            "コミュ英Ⅱ 234" ,
+            "現代文A 112" ,
+            "現代社会 441" ,
+            "政治経済 432" ,
+            "生物基礎 322" ,
+            "物理研究 332" ,
+            "体育" ,
+            "InteractiveEnglishⅠ 228" ,
+            "英文法Ⅰ　222" ,
+            "英文法Ⅱ 214" ,
+            "英文読解Ⅱ 216" ,
+            "スペイン語　215" ,
+            "韓国語　221" ,
+            "数学α 114" ,
+            "数学α 227"
+        )
+
+        val Getuyou3Items = arrayListOf(
+            "空き" ,
+            "古典B 111" ,
+            "日本史B 432" ,
+            "日本史総合 433" ,
+            "数学Ⅱ基礎 227" ,
+            "数学Ⅲ 228" ,
+            "コミュ英Ⅱ 234" ,
+            "倫理 431" ,
+            "生物基礎 322" ,
+            "物理研究 332" ,
+            "体育" ,
+            "美術Ⅱ 323" ,
+            "韓国語 221" ,
+            "スペイン語 215" ,
+            "イタリア語 214" ,
+            "家庭基礎 222" ,
+            "数学α 216" ,
+            "1F論理・表現Ⅰ 235"
+        )
+        val Getuyou4Items = arrayListOf(
+            "空き" ,
+            "古典B 111" ,
+            "日本史B 432" ,
+            "日本史総合 433" ,
+            "数学Ⅱ基礎 227" ,
+            "数学Ⅲ 228" ,
+            "コミュ英Ⅱ 234" ,
+            "倫理 431" ,
+            "生物基礎 322" ,
+            "物理研究 332" ,
+            "体育" ,
+            "美術Ⅱ 323" ,
+            "韓国語 221" ,
+            "スペイン語 215" ,
+            "イタリア語 214" ,
+            "家庭基礎 222" ,
+            "数学α 216" ,
+            "1F論理・表現Ⅰ 235"
+        )
+
+        val Getuyou5Items = arrayListOf(
+            "空き" ,
+            "現代文B 112" ,
+            "古典B 111" ,
+            "数学Ⅱ基礎 227" ,
+            "コミュ英Ⅱ 234" ,
+            "日本史総合 433" ,
+            "コミュ英Ⅲ 235" ,
+            "倫理 431" ,
+            "政治経済 432" ,
+            "国際社会 114" ,
+            "数学研究Ⅰ 214" ,
+            "数学B 223" ,
+            "生物 321" ,
+            "体育" ,
+            "音楽Ⅱ 445" ,
+            "家庭基礎 222" ,
+            "数学α 216" ,
+            "1F Critical Thinking 228" ,
+            "History 224" ,
+            "Mathematics 226" ,
+            "Japanese 215"
+        )
+
+        val Getuyou6Items = arrayListOf(
+            "空き" ,
+            "現代文B 113" ,
+            "日本史B 433" ,
+            "コミュ英語Ⅱ 234" ,
+            "コミュ英Ⅲ 235" ,
+            "現代文A 112" ,
+            "古典A 114" ,
+            "政治経済 432" ,
+            "地理A 114" ,
+            "現代社会 441" ,
+            "数学研究Ⅱ 223" ,
+            "化学研究 321" ,
+            "保健 221" ,
+            "英コミュⅠAd 227" ,
+            "英コミュⅠAd 228" ,
+            "Mathematics 226" ,
+            "Visual Arts 323" ,
+            "Biorogy 226"
+        )
 
 
-        val Kayou1Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Kayou2Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Kayou3Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Kayou4Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Kayou5Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Kayou6Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
+
+        val Kayou1Items = arrayListOf(
+            "空き" ,
+            "世界史B 433" ,
+            "数学Ⅱ基礎 228" ,
+            "数学Ⅱ発展 227" ,
+            "物理 332" ,
+            "化学 321" ,
+            "コミュ英Ⅱ 234" ,
+            "コミュ英ⅡAd 235" ,
+            "現代社会 441" ,
+            "保健 432" ,
+            "英文法Ⅰ 221" ,
+            "フランス語 214" ,
+            "中国語 223" ,
+            "家庭基礎 222" ,
+            "論理表現Ⅰ 215"
+        )
+        val Kayou2Items = arrayListOf(
+            "空き" ,
+            "世界史B 433" ,
+            "数学Ⅱ基礎 228" ,
+            "化学 321" ,
+            "数学Ⅱ発展 227" ,
+            "物理 332" ,
+            "コミュ英Ⅱ 234" ,
+            "コミュ英ⅡAd 235" ,
+            "現代社会 441" ,
+            "保健 432" ,
+            "英文法Ⅰ 221" ,
+            "フランス語 214" ,
+            "中国語 223" ,
+            "家庭基礎 222" ,
+            "Critical Thinking 216" ,
+            "論理表現Ⅰ 215" ,
+            "Biology 224" ,
+            "History 226"
+        )
+
+        val Kayou3Items = arrayListOf(
+            "空き" ,
+            "古典B 111" ,
+            "日本史B 433" ,
+            "数学Ⅱ基礎 228" ,
+            "物理 332" ,
+            "コミュ英Ⅱ 234" ,
+            "現代文A 112" ,
+            "倫理 431" ,
+            "現代社会 441" ,
+            "保健 432" ,
+            "音楽Ⅲ 445" ,
+            "InteractiveEnglishⅠ 235" ,
+            "英文法Ⅲ 216" ,
+            "フランス語 214" ,
+            "中国語 223" ,
+            "家庭基礎 222" ,
+            "論理表現Ⅰ 215" ,
+            "現代の国語 227"
+        )
+        val Kayou4Items = arrayListOf(
+            "空き" ,
+            "古典B 111" ,
+            "日本史B 433" ,
+            "数学Ⅱ基礎 228" ,
+            "物理 332" ,
+            "コミュ英Ⅱ 234" ,
+            "現代文A 112" ,
+            "倫理 431" ,
+            "現代社会 441" ,
+            "保健 432" ,
+            "音楽Ⅲ 445" ,
+            "InteractiveEnglishⅠ 235" ,
+            "英文法Ⅲ 216" ,
+            "フランス語 214" ,
+            "中国語 223" ,
+            "家庭基礎 222" ,
+            "論理表現Ⅰ 215" ,
+            "現代の国語 227"
+        )
+
+        val Kayou5Items = arrayListOf(
+            "空き" ,
+            "古典B 111" ,
+            "日本史総合 432" ,
+            "世界史B 433" ,
+            "世界史総合 441" ,
+            "数学Ⅱ発展 227" ,
+            "数学Ⅲ 228" ,
+            "海外の文学 114" ,
+            "倫理 431" ,
+            "生物基礎 331" ,
+            "美術Ⅲ 323" ,
+            "体育" ,
+            "異文化理解Ⅰ 234" ,
+            "ライティングⅠ 235" ,
+            "InteractiveEnglishⅡ 221" ,
+            "英文法Ⅱ 222" ,
+            "Critical Thinking 216" ,
+            "EnglishB 224" ,
+            "Chemistry 226"
+        )
 
 
-        val Suiyou1Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Suiyou2Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Suiyou3Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Suiyou4Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Suiyou5Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Suiyou6Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
+        val Kayou6Items = arrayListOf(
+            "空き" ,
+            "日本史B 433" ,
+            "数学Ⅱ基礎 227" ,
+            "コミュ英Ⅱ 234" ,
+            "コミュ英Ⅱ 235" ,
+            "コミュ英ⅢAd 216" ,
+            "現代文A 112" ,
+            "日本の古典芸能 114" ,
+            "生物基礎 331" ,
+            "保健 221" ,
+            "体育" ,
+            "英文法Ⅰ 228" ,
+            "ライティングI 222" ,
+            "InteractiveEnglishⅡ 214" ,
+            "英文読解Ⅰ 223" ,
+            "History 224" ,
+            "Mathematics 226"
+        )
 
 
 
-        val Mokuyou1Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Mokuyou2Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Mokuyou3Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Mokuyou4Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Mokuyou5Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Mokuyou6Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
+        val Suiyou1Items = arrayListOf(
+            "空き" ,
+            "現代文B 112" ,
+            "古典B 111" ,
+            "日本史総合 433" ,
+            "数学Ⅱ基礎 227" ,
+            "生物 321" ,
+            "コミュ英Ⅱ 234" ,
+            "コミュ英Ⅲ 235" ,
+            "国語読解 114" ,
+            "政治経済 432" ,
+            "現代社会 441" ,
+            "数学B 223" ,
+            "生物研究 322" ,
+            "保健 221" ,
+            "家庭基礎 431" ,
+            "数学α 222" ,
+            "CriticalThinking 216" ,
+            "TOK 224" ,
+            "TOK 226"
+        )
+        val Suiyou2Items = arrayListOf(
+            "空き" ,
+            "現代文B 112" ,
+            "古典B 111" ,
+            "日本史総合 433" ,
+            "数学Ⅱ基礎 227" ,
+            "生物 321" ,
+            "コミュ英Ⅱ 234" ,
+            "コミュ英Ⅲ 235" ,
+            "国語読解 114" ,
+            "政治経済 432" ,
+            "現代社会 441" ,
+            "数学B 223" ,
+            "生物研究 322" ,
+            "保健 221" ,
+            "家庭基礎 431" ,
+            "数学α 222" ,
+            "CriticalThinking 216" ,
+            "TOK 224" ,
+            "TOK 226"
+        )
+
+        val Suiyou3Items = arrayListOf(
+            "空き" ,
+            "古典B 111" ,
+            "日本史総合　433" ,
+            "数学Ⅱ基礎 227" ,
+            "コミュ英Ⅱ 234" ,
+            "現代文A　112" ,
+            "現代社会 441" ,
+            "数学B 223" ,
+            "地学基礎 332" ,
+            "異文化理解Ⅰ 235" ,
+            "美術Ⅱ 323" ,
+            "家庭基礎 431" ,
+            "知の道筋 114" ,
+            "卒論" ,
+            "現代の国語 216" ,
+            "Biology 224" ,
+            "EnglishB 226"
+        )
+        val Suiyou4Items = arrayListOf(
+            "空き" ,
+            "古典B 111" ,
+            "日本史総合　433" ,
+            "数学Ⅱ基礎 227" ,
+            "コミュ英Ⅱ 234" ,
+            "現代文A　112" ,
+            "現代社会 441" ,
+            "数学B 223" ,
+            "地学基礎 332" ,
+            "異文化理解Ⅰ 235" ,
+            "美術Ⅱ 323" ,
+            "家庭基礎 431" ,
+            "知の道筋 114" ,
+            "卒論" ,
+            "現代の国語 216" ,
+            "Biology 224" ,
+            "EnglishB 226"
+        )
+
+        val Suiyou5Items = arrayListOf(
+            "空き" ,
+            "現代文B 111" ,
+            "日本史B 433" ,
+            "数学Ⅱ発展 233" ,
+            "数学Ⅲ 228" ,
+            "コミュ英Ⅱ 234" ,
+            "コミュ英Ⅲ 235" ,
+            "政治経済 432" ,
+            "現代社会 441" ,
+            "地理A 431" ,
+            "国際社会 114" ,
+            "地学基礎 322" ,
+            "生物基礎 331" ,
+            "保健 221" ,
+            "音楽Ⅱ 445" ,
+            "InteractiveEnglishⅡ 216" ,
+            "英文法Ⅰ 222" ,
+            "家庭基礎 321" ,
+            "数学α 227" ,
+            "JapaneseA 224" ,
+            "JapaneseA 226"
+        )
+        val Suiyou6Items = arrayListOf(
+            "空き" ,
+            "映像文化と自己表現Ⅰ 111" ,
+            "江戸東京怪談文化の謎 112" ,
+            "テクストの記号学 216" ,
+            "起業家養成塾 441" ,
+            "自分探しとふれあいの心理学 433" ,
+            "世界の今のエシカル 214" ,
+            "ヨコハマの歴史といま 432" ,
+            "発展物理 431" ,
+            "器楽 445" ,
+            "ソルフェージュ 311" ,
+            "ディズニーで探究する英語学習法 234" ,
+            "きもの学 321" ,
+            "マルチメディアとプレゼンテーション演習 231" ,
+            "古典購読 114" ,
+            "美術Ⅲ 323" ,
+            "Chemistry 224" ,
+            "Biology 226"
+        )
 
 
-        val Kinyou1Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Kinyou2Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Kinyou3Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Kinyou4Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Kinyou5Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
-        val Kinyou6Items = arrayListOf("体育１　体育館" , "あ" ,"HR 231","数学Ⅲ 241","現代社会 431","コミュ英 243","化学")
+
+        val Mokuyou1Items = arrayListOf(
+            "空き" ,
+            "現代文B 111" ,
+            "日本史B 433" ,
+            "コミュ英Ⅱ 234" ,
+            "コミュ英Ⅲ 235" ,
+            "数学Ⅲ 228" ,
+            "地理A 441" ,
+            "数学研究Ⅲ 215" ,
+            "生物研究 322" ,
+            "保健 432" ,
+            "体育" ,
+            "音楽Ⅲ 445" ,
+            "ライティングⅠ 221" ,
+            "ドイツ語 214" ,
+            "服飾造形 321" ,
+            "論理表現Ⅰ 216" ,
+            "Chemistry 224" ,
+            "JapaneseA 226"
+        )
+        val Mokuyou2Items = arrayListOf(
+            "空き" ,
+            "現代文B 111" ,
+            "日本史B 433" ,
+            "コミュ英Ⅱ 234" ,
+            "コミュ英Ⅲ 235" ,
+            "数学Ⅲ 228" ,
+            "地理A 441" ,
+            "数学研究Ⅲ 215" ,
+            "生物研究 322" ,
+            "保健 432" ,
+            "体育" ,
+            "音楽Ⅲ 445" ,
+            "ライティングⅠ 221" ,
+            "ドイツ語 214" ,
+            "服飾造形 321" ,
+            "論理表現Ⅰ 216" ,
+            "Chemistry 224" ,
+            "JapaneseA 226"
+        )
+
+        val Mokuyou3Items = arrayListOf(
+            "空き" ,
+            "日本史B 433" ,
+            "数学Ⅱ 227" ,
+            "コミュ英Ⅱ 234" ,
+            "コミュ英Ⅱ 235" ,
+            "地理A 441" ,
+            "倫理 431" ,
+            "保健 432" ,
+            "体育" ,
+            "英文読解Ⅰ 221" ,
+            "InteractiveEnglishⅠ 223" ,
+            "ドイツ語 214" ,
+            "服飾造形Ⅱ 321" ,
+            "家庭基礎 222" ,
+            "CriticalThinking 228" ,
+            "Biology 224" ,
+            "History 226"
+        )
+        val Mokuyou4Items = arrayListOf(
+            "空き" ,
+            "数学Ⅱ 227" ,
+            "日本史B 433" ,
+            "コミュ英Ⅱ 234" ,
+            "コミュ英Ⅱ 235" ,
+            "地理A 441" ,
+            "倫理 431" ,
+            "保健 432" ,
+            "体育" ,
+            "英文読解Ⅰ 221" ,
+            "InteractiveEnglishⅠ 223" ,
+            "ドイツ語 214" ,
+            "服飾造形Ⅱ 321" ,
+            "家庭基礎 222" ,
+            "Biology 224" ,
+            "History 226"
+        )
+
+        val Mokuyou5Items = arrayListOf(
+            "HR" ,
+            "VisualArts 323"
+        )
+
+        val Mokuyou6Items = arrayListOf(
+            "空き" ,
+            "EnglishB 224" ,
+            "Mathematics 226"
+        )
+
+
+        val Kinyou1Items = arrayListOf(
+            "空き" ,
+            "古典B 111" ,
+            "日本史総合 432" ,
+            "世界史B 433" ,
+            "世界史総合 441" ,
+            "数学Ⅱ発展 227" ,
+            "数学Ⅲ 228" ,
+            "数学B 223" ,
+            "生物基礎 322" ,
+            "韓国語 221" ,
+            "スペイン語 215" ,
+            "英文読解Ⅰ 234" ,
+            "家庭基礎 431" ,
+            "美術Ⅱ 323" ,
+            "現代の国語 216" ,
+            "論理表現Ⅰ 222" ,
+            "EnglishB 224" ,
+            "Chemistry 226"
+        )
+        val Kinyou2Items = arrayListOf(
+            "空き" ,
+            "古典B 111" ,
+            "日本史総合 432" ,
+            "世界史B 433" ,
+            "世界史総合 441" ,
+            "数学Ⅱ発展 227" ,
+            "数学Ⅲ 228" ,
+            "数学B 223" ,
+            "生物基礎 322" ,
+            "韓国語 221" ,
+            "スペイン語 215" ,
+            "英文読解Ⅰ 234" ,
+            "家庭基礎 431" ,
+            "美術Ⅱ 323" ,
+            "現代の国語 216" ,
+            "論理表現Ⅰ 222" ,
+            "EnglishB 224" ,
+            "Chemistry 226"
+        )
+
+        val Kinyou3Items = arrayListOf(
+            "空き" ,
+            "世界史B 433" ,
+            "数学Ⅱ基礎 228" ,
+            "数学Ⅱ発展 227" ,
+            "化学 321" ,
+            "物理 332" ,
+            "コミュ英Ⅱ 234" ,
+            "コミュ英ⅡAd 235" ,
+            "古典A 114" ,
+            "現代社会 441" ,
+            "生物基礎 322" ,
+            "韓国語 221" ,
+            "InteractiveEnglishⅠ 223" ,
+            "スペイン語 215" ,
+            "家庭基礎 431" ,
+            "美術Ⅱ 323" ,
+            "現代の国語 111" ,
+            "論理表現Ⅰ 222" ,
+            "現代の国語 112" ,
+            "JapaneseA 224" ,
+            "EnglishB 226"
+        )
+        val Kinyou4Items = arrayListOf(
+            "空き" ,
+            "世界史B 433" ,
+            "数学Ⅱ基礎 228" ,
+            "数学Ⅱ発展 227" ,
+            "物理 332" ,
+            "化学 321" ,
+            "コミュ英Ⅱ 234" ,
+            "コミュ英ⅡAd 235" ,
+            "古典A 114" ,
+            "現代社会 441" ,
+            "生物基礎 322" ,
+            "韓国語 221" ,
+            "InteractiveEnglishⅠ 223" ,
+            "スペイン語 215" ,
+            "家庭基礎 431" ,
+            "美術Ⅱ 323" ,
+            "現代の国語 111" ,
+            "論理表現Ⅰ 222" ,
+            "現代の国語 112" ,
+            "JapaneseA 224" ,
+            "EnglishB 226"
+        )
+
+        val Kinyou5Items = arrayListOf(
+            "空き" ,
+            "映像文化と自己表現Ⅱ 112" ,
+            "書の世界 111" ,
+            "文化の源泉 114" ,
+            "旅する人の観光学 432" ,
+            "ヒトの生物学 321" ,
+            "私たちの生活とスポーツ 235" ,
+            "演奏研究 445" ,
+            "声楽 311" ,
+            "私たちのまわりのデザイン工芸 323" ,
+            "ディズニーで探究する英語学習法Ⅱ 234" ,
+            "和の文化と調理学 431" ,
+            "卒業論文" ,
+            "現代社会 441" ,
+            "生物基礎 322" ,
+            "極限と人間 223" ,
+            "News in English 222" ,
+            "数学α 221" ,
+            "CriticalThinking 216" ,
+            "論理表現Ⅰ 228" ,
+            "現代の国語 227" ,
+            "Mathematics 224" ,
+            "History 226",
+
+        )
+
+        val Kinyou6Items = arrayListOf(
+            "空き" ,
+            "古典B 111" ,
+            "日本史B 433" ,
+            "数学Ⅱ基礎 228" ,
+            "物理 332" ,
+            "コミュ英Ⅱ 234" ,
+            "海外の文学 114" ,
+            "現代文A 112" ,
+            "生物基礎 331" ,
+            "化学研究 321" ,
+            "InteractiveEnglishⅠ 222" ,
+            "英文読解Ⅰ 223" ,
+            "高大連携 434" ,
+            "CriticalThinking 221" ,
+            "現代の国語 216" ,
+            "VisualArts 323"
+        )
 
 
 
-        //教科ごとの色分け
-        val japanese = arrayListOf("現代文B3","現代文B3 413","あ")
-        val math = arrayListOf("数学Ⅲ 241")
-        val english = arrayListOf("コミュ英 243")
-        val science = arrayListOf("化学")
-        val social = arrayListOf("現代社会 431")
-        val other = arrayListOf("HR 231","体育１　体育館","体育１")
+//教科ごとの色分け
+//現代文A・現代文B・古典A・古典B・現代の国語
+//数学B・数学α・数学Ⅱ・数学Ⅱ基礎・数学Ⅱ発展・数学Ⅲ・数学研究Ⅰ・数学研究Ⅱ・数学研究Ⅲ
+//英コミュⅠAd英文法Ⅰ英文法Ⅱ英文法Ⅲ英文読解Ⅰ英文読解Ⅱ英
+//化学研究化学
+//現代社会倫理史
+
+        val japanese = arrayListOf(
+            "現代文A 112" ,
+            "現代文B 111" ,
+            "現代文B 112" ,
+            "現代文B 113" ,
+            "古典A 114" ,
+            "古典B 111" ,
+            "現代の国語 227" ,
+            "現代の国語 216" ,
+            "現代の国語 111" ,
+            "現代の国語 112" ,
+            "現代の国語 227" ,
+            "JapaneseA 224" ,
+            "JapaneseA 226" ,
+            "論理表現Ⅰ 215" ,
+            "論理表現Ⅰ 216" ,
+            "論理表現Ⅰ 222" ,
+            "論理表現Ⅰ 228"
+        )
+        val math = arrayListOf(
+            "数学B 223" ,
+            "数学α 114" ,
+            "数学α 227" ,
+            "数学α 216" ,
+            "数学α 222" ,
+            "数学α 227" ,
+            "数学α 221" ,
+            "数学Ⅱ基礎 227" ,
+            "数学Ⅱ基礎 228" ,
+            "数学Ⅱ発展 223" ,
+            "数学Ⅱ発展 227" ,
+            "数学Ⅱ発展 233" ,
+            "数学Ⅲ 228" ,
+            "数学研究Ⅰ 214" ,
+            "数学研究Ⅱ 223" ,
+            "数学研究Ⅲ 215" ,
+            "Mathematics 226" ,
+        )
+        val english = arrayListOf(
+            "英コミュⅠAd 227" ,
+            "英文法Ⅰ　222" ,
+            "英文法Ⅰ 221" ,
+            "英コミュⅠAd 228" ,
+            "英文法Ⅰ 228" ,
+            "英文法Ⅱ　214" ,
+            "英文法Ⅱ 222" ,
+            "英文法Ⅲ 216" ,
+            "英文読解Ⅰ 223" ,
+            "英文読解Ⅰ 221" ,
+            "英文読解Ⅰ 234" ,
+            "英文読解Ⅱ 216" ,
+            "InteractiveEnglishⅠ 228" ,
+            "InteractiveEnglishⅠ 235" ,
+            "InteractiveEnglishⅠ 223" ,
+            "InteractiveEnglishⅠ 222" ,
+            "InteractiveEnglishⅡ 221" ,
+            "InteractiveEnglishⅡ 216" ,
+            "InteractiveEnglishⅡ 214" ,
+
+            "EnglishB 224" ,
+            "EnglishB 226" ,
+            "韓国語 221" ,
+            "スペイン語 215" ,
+            "イタリア語 214" ,
+            "フランス語 214" ,
+            "中国語 223" ,
+            "ドイツ語 214"
+        )
+        val science = arrayListOf(
+            "化学研究 321" ,
+            "化学 321" ,
+            "Chemistry 226" ,
+            "Chemistry 224" ,
+            "生物研究 322" ,
+            "生物基礎 322" ,
+            "生物基礎 331" ,
+            "物理研究 332" ,
+            "物理 332" ,
+            "Biology 224" ,
+            "発展物理 431" ,
+        )
+        val social = arrayListOf(
+            "現代社会 441" ,
+            "現代社会 431" ,
+            "倫理 431" ,
+            "日本史B 433" ,
+            "日本史B 432" ,
+            "日本史総合 433" ,
+            "日本史総合 432" ,
+            "世界史B 433" ,
+            "世界史総合 441" ,
+            "政治経済 432",
+            "地理A 114" ,
+            "地理A 431" ,
+            "地理A 441" ,
+
+        )
+        val other = arrayListOf(
+            "HR" ,
+            "体育" ,
+            "映像文化と自己表現Ⅰ 111" ,
+            "江戸東京怪談文化の謎 112" ,
+            "テクストの記号学 216" ,
+            "起業家養成塾 441" ,
+            "自分探しとふれあいの心理学 433" ,
+            "世界の今のエシカル 214" ,
+            "ヨコハマの歴史といま 432" ,
+            "器楽 445" ,
+            "ソルフェージュ 311" ,
+            "ディズニーで探究する英語学習法 234" ,
+            "きもの学 321" ,
+            "マルチメディアとプレゼンテーション演習 231" ,
+            "古典購読 114" ,
+            "美術Ⅲ 323" ,
+            "映像文化と自己表現Ⅱ 112" ,
+            "書の世界 111" ,
+            "文化の源泉 114" ,
+            "旅する人の観光学 432" ,
+            "ヒトの生物学 321" ,
+            "私たちの生活とスポーツ 235" ,
+            "演奏研究 445" ,
+            "声楽 311" ,
+            "私たちのまわりのデザイン工芸 323" ,
+            "ディズニーで探究する英語学習法Ⅱ 234" ,
+            "和の文化と調理学 431" ,
+            "極限と人間 223" ,
+            "News in English 222" ,
+            "CriticalThinking 216" ,
+            "現代の国語 227" ,
+            "CriticalThinking 221" ,
+            "CriticalThinking 228" ,
+            "卒業論文" ,
+            "卒論" ,
+            "家庭基礎 222" ,
+            "家庭基礎 431" ,
+            "韓国語 221" ,
+            "異文化理解Ⅰ 235" ,
+            "異文化理解Ⅰ 234" ,
+
+
+
+//7/12 update
+            "音楽Ⅱ 445" ,
+            "音楽Ⅲ 445" ,
+
+        )
+
+
+////第2外国語別枠で用意する？
+//val foreign = arrayListOf("韓国語 221","スペイン語 215","イタリア語 214","フランス語 214","中国語 223","ドイツ語 214")
+
+
 
 
 
@@ -379,7 +1091,7 @@ class tourokuManday_ad: Fragment() {
                 id: Long
             ) {
                 val Getuyou3_text = parent?.selectedItem as String
-
+                
                 //背景色の設定
                 //positionは、選ばれたリストのindex
                 if (japanese.contains(Getuyou3Items[position])) {
@@ -742,7 +1454,7 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Kayou3.setBackgroundResource(border)
                 }
-
+                
                 //firestoreに自動保存
                 val Kayou3_sub = hashMapOf(
                     "Kayou3" to Kayou3_text ,
@@ -800,7 +1512,7 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Kayou4.setBackgroundResource(border)
                 }
-
+                
                 //firestoreに自動保存
                 val Kayou4_sub = hashMapOf(
                     "Kayou4" to Kayou4_text ,
@@ -857,7 +1569,7 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Kayou5.setBackgroundResource(border)
                 }
-
+                
                 //firestoreに自動保存
                 val Kayou5_sub = hashMapOf(
                     "Kayou5" to Kayou5_text ,
@@ -913,7 +1625,7 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Kayou6.setBackgroundResource(border)
                 }
-
+                
                 //firestoreに自動保存
                 val Kayou6_sub = hashMapOf(
                     "Kayou6" to Kayou6_text ,
@@ -973,8 +1685,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Suiyou1.setBackgroundResource(border)
                 }
-
-
+                
+                
                 //firestoreに自動保存
                 val Suiyou1_sub = hashMapOf(
                     "Suiyou1" to Suiyou1_text ,
@@ -1032,7 +1744,7 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Suiyou2.setBackgroundResource(border)
                 }
-
+                
                 //firestoreに自動保存
                 val Suiyou2_sub = hashMapOf(
                     "Suiyou2" to Suiyou2_text ,
@@ -1089,7 +1801,7 @@ class tourokuManday_ad: Fragment() {
                 }else {
                     Suiyou3.setBackgroundResource(border)
                 }
-
+                
                 //firestoreに自動保存
                 val Suiyou3_sub = hashMapOf(
                     "Suiyou3" to Suiyou3_text ,
@@ -1147,8 +1859,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Suiyou4.setBackgroundResource(border)
                 }
-
-
+                
+                
                 //firestoreに自動保存
                 val Suiyou4_sub = hashMapOf(
                     "Suiyou4" to Suiyou4_text ,
@@ -1208,8 +1920,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Suiyou5.setBackgroundResource(border)
                 }
-
-
+                
+                
                 //firestoreに自動保存
                 val Suiyou5_sub = hashMapOf(
                     "Suiyou5" to Suiyou5_text ,
@@ -1266,7 +1978,7 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Suiyou6.setBackgroundResource(border)
                 }
-
+                
                 //firestoreに自動保存
                 val Suiyou6_sub = hashMapOf(
                     "Suiyou6" to Suiyou6_text ,
@@ -1327,7 +2039,7 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Mokuyou1.setBackgroundResource(border)
                 }
-
+                
                 //firestoreに自動保存
                 val Mokuyou1_sub = hashMapOf(
                     "Mokuyou1" to Mokuyou1_text ,
@@ -1385,8 +2097,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Mokuyou2.setBackgroundResource(border)
                 }
-
-
+                
+                
                 //firestoreに自動保存
                 val Mokuyou2_sub = hashMapOf(
                     "Mokuyou2" to Mokuyou2_text ,
@@ -1444,8 +2156,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Mokuyou3.setBackgroundResource(border)
                 }
-
-
+                
+                
 
                 //firestoreに自動保存
                 val Mokuyou3_sub = hashMapOf(
@@ -1506,8 +2218,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Mokuyou4.setBackgroundResource(border)
                 }
-
-
+                
+                
                 //firestoreに自動保存
                 val Mokuyou4_sub = hashMapOf(
                     "Mokuyou4" to Mokuyou4_text ,
@@ -1565,8 +2277,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Mokuyou5.setBackgroundResource(border)
                 }
-
-
+                
+                
                 //firestoreに自動保存
                 val Mokuyou5_sub = hashMapOf(
                     "Mokuyou5" to Mokuyou5_text ,
@@ -1624,8 +2336,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Mokuyou6.setBackgroundResource(border)
                 }
-
-
+                
+                
                 //firestoreに自動保存
                 val Mokuyou6_sub = hashMapOf(
                     "Mokuyou6" to Mokuyou6_text ,
@@ -1685,8 +2397,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Kinyou1.setBackgroundResource(border)
                 }
-
-
+                
+                
 
                 //firestoreに自動保存
                 val Kinyou1_sub = hashMapOf(
@@ -1746,8 +2458,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Kinyou2.setBackgroundResource(border)
                 }
-
-
+                
+                
                 //firestoreに自動保存
                 val Kinyou2_sub = hashMapOf(
                     "Kinyou2" to Kinyou2_text ,
@@ -1804,8 +2516,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Kinyou3.setBackgroundResource(border)
                 }
-
-
+                
+                
 
                 //firestoreに自動保存
                 val Kinyou3_sub = hashMapOf(
@@ -1864,8 +2576,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Kinyou4.setBackgroundResource(border)
                 }
-
-
+                
+                
                 //firestoreに自動保存
                 val Kinyou4_sub = hashMapOf(
                     "Kinyou4" to Kinyou4_text ,
@@ -1924,8 +2636,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Kinyou5.setBackgroundResource(border)
                 }
-
-
+                
+                
                 //firestoreに自動保存
                 val Kinyou5_sub = hashMapOf(
                     "Kinyou5" to Kinyou5_text ,
@@ -1985,8 +2697,8 @@ class tourokuManday_ad: Fragment() {
                 }else{
                     Kinyou6.setBackgroundResource(border)
                 }
-
-
+                
+                
                 //firestoreに自動保存
                 val Kinyou6_sub = hashMapOf(
                     "Kinyou6" to Kinyou6_text ,

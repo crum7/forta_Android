@@ -1,4 +1,4 @@
-package com.example.housei_kokusai
+package com.forta.housei_kokusai
 
 
 import android.content.Context
