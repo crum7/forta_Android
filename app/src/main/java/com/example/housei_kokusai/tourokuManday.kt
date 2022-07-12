@@ -405,7 +405,7 @@ class tourokuManday : Fragment() {
             "体育" ,
             "異文化理解Ⅰ 234" ,
             "ライティングⅠ 235" ,
-            "InteractiveEnglishⅠⅠ 221" ,
+            "InteractiveEnglishⅡ 221" ,
             "英文法Ⅱ 222" ,
             "Critical Thinking 216" ,
             "EnglishB 224" ,
@@ -427,7 +427,7 @@ class tourokuManday : Fragment() {
             "体育" ,
             "英文法Ⅰ 228" ,
             "ライティングI 222" ,
-            "Interactive EnglishⅡ 214" ,
+            "InteractiveEnglishⅡ 214" ,
             "英文読解Ⅰ 223" ,
             "History 224" ,
             "Mathematics 226"
@@ -765,7 +765,8 @@ class tourokuManday : Fragment() {
             "論理表現Ⅰ 228" ,
             "現代の国語 227" ,
             "Mathematics 224" ,
-            "History 226"
+            "History 226",
+
         )
 
         val Kinyou6Items = arrayListOf(
@@ -849,9 +850,12 @@ class tourokuManday : Fragment() {
             "英文読解Ⅱ 216" ,
             "InteractiveEnglishⅠ 228" ,
             "InteractiveEnglishⅠ 235" ,
-            "InteractiveEnglishⅠⅠ 221" ,
             "InteractiveEnglishⅠ 223" ,
             "InteractiveEnglishⅠ 222" ,
+            "InteractiveEnglishⅡ 221" ,
+            "InteractiveEnglishⅡ 216" ,
+            "InteractiveEnglishⅡ 214" ,
+
             "EnglishB 224" ,
             "EnglishB 226" ,
             "韓国語 221" ,
@@ -884,7 +888,11 @@ class tourokuManday : Fragment() {
             "日本史総合 432" ,
             "世界史B 433" ,
             "世界史総合 441" ,
-            "政治経済 432"
+            "政治経済 432",
+            "地理A 114" ,
+            "地理A 431" ,
+            "地理A 441" ,
+
         )
         val other = arrayListOf(
             "HR" ,
@@ -925,6 +933,14 @@ class tourokuManday : Fragment() {
             "家庭基礎 222" ,
             "家庭基礎 431" ,
             "韓国語 221" ,
+            "異文化理解Ⅰ 235" ,
+            "異文化理解Ⅰ 234" ,
+
+
+
+//7/12 update
+            "音楽Ⅱ 445" ,
+            "音楽Ⅲ 445" ,
 
         )
 

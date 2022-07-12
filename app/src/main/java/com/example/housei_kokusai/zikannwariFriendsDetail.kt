@@ -261,9 +261,13 @@ class zikannwariFriendsDetail : Fragment() {
             "英文読解Ⅱ 216" ,
             "InteractiveEnglishⅠ 228" ,
             "InteractiveEnglishⅠ 235" ,
-            "InteractiveEnglishⅠⅠ 221" ,
             "InteractiveEnglishⅠ 223" ,
             "InteractiveEnglishⅠ 222" ,
+            "InteractiveEnglishⅡ 221" ,
+            "InteractiveEnglishⅡ 216" ,
+            "InteractiveEnglishⅡ 214" ,
+            "Interactive EnglishⅡ 214" ,
+            "Interactive EnglishⅠⅠ 214" ,
             "EnglishB 224" ,
             "EnglishB 226" ,
             "韓国語 221" ,
@@ -296,7 +300,10 @@ class zikannwariFriendsDetail : Fragment() {
             "日本史総合 432" ,
             "世界史B 433" ,
             "世界史総合 441" ,
-            "政治経済 432"
+            "政治経済 432",
+            "地理A 114" ,
+            "地理A 431" ,
+            "地理A 441" ,
         )
         val other = arrayListOf(
             "HR" ,
@@ -337,6 +344,10 @@ class zikannwariFriendsDetail : Fragment() {
             "家庭基礎 222" ,
             "家庭基礎 431" ,
             "韓国語 221" ,
+            "音楽Ⅱ 445" ,
+            "音楽Ⅲ 445" ,
+            "異文化理解Ⅰ 235" ,
+            "異文化理解Ⅰ 234" ,
 
             )
 
