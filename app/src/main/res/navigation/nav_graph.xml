@@ -93,7 +93,31 @@
         android:label="fragment_firsttime"
         tools:layout="@layout/fragment_firsttime" >
         <action
-            android:id="@+id/action_firsttime_to_tourokuManday"
+            android:id="@+id/action_firsttime_to_firsttime_2"
+            app:destination="@id/firsttime_2" />
+    </fragment>
+    <fragment
+        android:id="@+id/firsttime_2"
+        android:name="com.forta.housei_kokusai.firsttime_2"
+        android:label="firsttime_2" >
+        <action
+            android:id="@+id/action_firsttime_2_to_firsttime_3"
+            app:destination="@id/firsttime_3" />
+    </fragment>
+    <fragment
+        android:id="@+id/firsttime_3"
+        android:name="com.forta.housei_kokusai.firsttime_3"
+        android:label="firsttime_3" >
+        <action
+            android:id="@+id/action_firsttime_3_to_firsttime_4"
+            app:destination="@id/firsttime_4" />
+    </fragment>
+    <fragment
+        android:id="@+id/firsttime_4"
+        android:name="com.forta.housei_kokusai.firsttime_4"
+        android:label="firsttime_4" >
+        <action
+            android:id="@+id/action_firsttime_4_to_tourokuManday"
             app:destination="@id/tourokuManday" />
     </fragment>
 

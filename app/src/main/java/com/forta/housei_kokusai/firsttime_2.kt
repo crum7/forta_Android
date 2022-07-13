@@ -20,7 +20,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
-class firsttime : Fragment() ,View.OnClickListener {
+class firsttime_2 : Fragment() ,View.OnClickListener {
 
 
     var navController: NavController? = null
@@ -33,7 +33,7 @@ class firsttime : Fragment() ,View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_firsttime , container , false)
+        return inflater.inflate(R.layout.fragment_firsttime_2 , container , false)
     }
 
     override fun onViewCreated(view: View , savedInstanceState: Bundle?) {
@@ -46,59 +46,31 @@ class firsttime : Fragment() ,View.OnClickListener {
         //val ref = database.getReference()
         auth=Firebase.auth
 
-        //自分の名前
-        val user_name=Firebase.auth.currentUser?.displayName.toString()
-
-
-        //名前変更
-        val button=view.findViewById<Button>(R.id.save_button_name_first)
-        val changeName=requireActivity().findViewById<EditText>(R.id.changeName_first)
-        val caution=requireActivity().findViewById<TextView>(R.id.first_caution)
 
 
 
-        button.setOnClickListener {
 
-            val willName=changeName.text.toString()
-
-            if(willName == "*" || willName == "admit_friends" || willName == "display_name" || willName == "watch_by"|| willName == "blocklist"){
-                caution.setText("その名前は使えません。")
-
-            }else {
-
-
-                val custom_name=hashMapOf(
-                    "display_name" to willName ,
-
-                    )
-
-                val custom_name_others=hashMapOf(
-                    "name" to willName ,
-
-                    )
-
-
-                //自分のdisplay_nameの設定
-                db.collection("users_profile").document("$user_name")
-                    .set(custom_name as Map<String , Any>)
-            }
-        }
 
 
 
 
         //gif画像の表示
-            val gifView1=view.findViewById<ImageView>(R.id.gifView1)
-            val gifView2=view.findViewById<ImageView>(R.id.gifView2)
-            val gifView3=view.findViewById<ImageView>(R.id.gifView3)
+        val gifView1=view.findViewById<ImageView>(R.id.gifView1)
 
 
+
+        val gifMovie1: Int=R.raw.test
+
+
+
+        // gif画像のセット
+        Glide.with(this).load(gifMovie1).into(gifView1)
 
 
 
         //ボタンで画面遷移
         navController = Navigation.findNavController(view)
-        view.findViewById<Button>(R.id.button_first).setOnClickListener(this)
+        view.findViewById<Button>(R.id.button_first_2).setOnClickListener(this)
         //アプリの起動回数把握
         val launch_count = requireActivity().getSharedPreferences("ファイル名" , Context.MODE_PRIVATE)
         var countTime = launch_count.getInt("Count" , 0)
@@ -119,7 +91,7 @@ class firsttime : Fragment() ,View.OnClickListener {
     override fun onClick(v: View?) {
         when(v!!.id){
 
-            R.id.button_first-> navController!!.navigate(R.id.action_firsttime_to_firsttime_2)
+            R.id.button_first_2-> navController!!.navigate(R.id.action_firsttime_2_to_firsttime_3)
 
 
 

@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         //login2とfirsttimeでは、bottom_menuとtoolbarを消す
         navController.addOnDestinationChangedListener { _, destination, _ ->
             toolbar.visibility = if(destination.id == R.id.login2 || destination.id == R.id.firsttime) View.GONE else View.VISIBLE
-            buttomNavigationView.visibility = if(destination.id == R.id.login2 || destination.id == R.id.firsttime) View.GONE else View.VISIBLE
+            buttomNavigationView.visibility = if(destination.id == R.id.login2 || destination.id == R.id.firsttime || destination.id == R.id.firsttime_2 || destination.id == R.id.firsttime_3 || destination.id == R.id.firsttime_4) View.GONE else View.VISIBLE
         }
 
 

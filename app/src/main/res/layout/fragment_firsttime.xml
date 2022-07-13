@@ -35,7 +35,7 @@
         android:text="1. まずは、ユーザーネームの設定から。"
         android:textSize="@dimen/browser_actions_context_menu_min_padding"
         app:layout_constraintTop_toBottomOf="@id/welcome"
-        android:paddingTop="40sp"
+        android:paddingTop="200sp"
         app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
@@ -45,7 +45,7 @@
             android:text="友達があなたを認識するために使用され、何度でも変更できます。"
             android:textSize="13sp"
             app:layout_constraintTop_toBottomOf="@id/first"
-            android:paddingTop="10sp"
+            android:paddingTop="20sp"
             app:layout_constraintStart_toStartOf="parent"/>
 
 
@@ -55,7 +55,7 @@
             android:id="@+id/changeName_first"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:hint="自分のユーザー名"
+            android:hint="ユーザーネーム"
             android:inputType="text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/first_add"
@@ -142,6 +142,15 @@ abcdefghijklmnopqrstuvwxyz
 "
             />
 
+        <TextView
+            android:id="@+id/first_caution"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@id/changeName_first"
+            android:paddingTop="20sp"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <Button
             android:id="@+id/save_button_name_first"
@@ -157,116 +166,16 @@ abcdefghijklmnopqrstuvwxyz
             app:layout_constraintTop_toBottomOf="@id/first_add" />
 
 
-
-        <TextView
-            android:id="@+id/second"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="2. 自分の時間割を設定しましょう。"
-            android:textSize="@dimen/browser_actions_context_menu_min_padding"
-            app:layout_constraintTop_toBottomOf="@id/save_button_name_first"
-            android:paddingTop="40sp"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <TextView
-            android:id="@+id/second_add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="友達はあなたが登録した時間割を見ることが出来ます。"
-            android:textSize="13sp"
-            app:layout_constraintTop_toBottomOf="@id/second"
-            android:paddingTop="10sp"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-
-
-
-        <ImageView
-            android:id="@+id/gifView1"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/second_add"
-            android:contentDescription="時間割の設定の説明" />
-
-
-
-
-
-        <TextView
-            android:id="@+id/third"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="3. 友達の時間割を見てみましょう"
-            android:textSize="@dimen/browser_actions_context_menu_min_padding"
-            app:layout_constraintTop_toBottomOf="@id/gifView1"
-            android:paddingTop="40sp"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-
-        <TextView
-            android:id="@+id/third_add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="友達の検索、追加、時間割を見ることが出来ます。"
-            android:textSize="13sp"
-            app:layout_constraintTop_toBottomOf="@id/third"
-            android:paddingTop="10sp"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <ImageView
-            android:id="@+id/gifView2"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/third_add"
-            android:contentDescription="友達の時間割の見方" />
-
-
-
-
-
-
-
-
-        <TextView
-            android:id="@+id/forth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="4. 各種設定"
-            android:textSize="@dimen/browser_actions_context_menu_min_padding"
-            app:layout_constraintTop_toBottomOf="@id/gifView2"
-            android:paddingTop="40sp"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <TextView
-            android:id="@+id/forth_add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="友達以外に見られていたらブロック。ユーザー名変更もここから。"
-            android:textSize="13sp"
-            app:layout_constraintTop_toBottomOf="@id/forth"
-            android:paddingTop="10sp"
-            app:layout_constraintStart_toStartOf="parent"/>
-        <ImageView
-            android:id="@+id/gifView3"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/forth_add"
-            android:contentDescription="各種設定の仕方" />
-
-
-
         <Button
             android:id="@+id/button_first"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/gifView3"
+            android:layout_marginTop="350dp"
             android:background="@drawable/kadomaru"
+            android:text="@string/次へ"
             app:backgroundTint="@null"
-            android:text="自分の時間割を登録"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_caution" />
 
 
 
