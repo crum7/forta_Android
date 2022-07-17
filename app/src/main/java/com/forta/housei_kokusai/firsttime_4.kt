@@ -50,7 +50,7 @@ class firsttime_4 : Fragment() ,View.OnClickListener {
         val gifView3=view.findViewById<ImageView>(R.id.gifView3)
 
 
-        val gifMovie3: Int=R.raw.test
+        val gifMovie3: Int=R.raw.sougou
 
 
         // gif画像のセット

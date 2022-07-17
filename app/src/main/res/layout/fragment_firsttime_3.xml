@@ -12,20 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <TextView
-                android:id="@+id/welcome"
-                android:layout_width="match_parent"
-                android:layout_height="60sp"
-                android:gravity="center"
-                android:text="fortaへようこそ"
-                android:textSize="45sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="678sp">
 
 
             <TextView
@@ -36,7 +30,8 @@
                 android:text="3. 友達の時間割を見てみましょう"
                 android:textSize="@dimen/browser_actions_context_menu_min_padding"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/welcome" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteY="60dp" />
 
 
             <TextView
@@ -52,24 +47,39 @@
             <ImageView
                 android:id="@+id/gifView2"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="522sp"
                 android:contentDescription="友達の時間割の見方"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/third_add" />
 
-
-            <Button
-                android:id="@+id/button_first_3"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/kadomaru"
-                android:text="@string/次へ"
-                app:backgroundTint="@null"
-                android:layout_marginTop="535dp"
+                android:layout_height="0dip"
+                android:layout_marginTop="520dp"
+                android:layout_marginBottom="16sp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gifView2" />
+                app:layout_constraintTop_toTopOf="@+id/gifView2">
+
+                <Button
+                    android:id="@+id/button_first_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:background="@drawable/kadomaru"
+                    android:text="@string/次へ"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
     </ScrollView>
 </FrameLayout>

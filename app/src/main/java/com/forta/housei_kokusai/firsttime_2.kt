@@ -59,7 +59,7 @@ class firsttime_2 : Fragment() ,View.OnClickListener {
 
 
 
-        val gifMovie1: Int=R.raw.test
+        val gifMovie1: Int=R.raw.touroku
 
 
 

@@ -90,7 +90,7 @@
     <fragment
         android:id="@+id/firsttime"
         android:name="com.forta.housei_kokusai.firsttime"
-        android:label="fragment_firsttime"
+        android:label="fortaの使い方"
         tools:layout="@layout/fragment_firsttime" >
         <action
             android:id="@+id/action_firsttime_to_firsttime_2"
@@ -99,7 +99,7 @@
     <fragment
         android:id="@+id/firsttime_2"
         android:name="com.forta.housei_kokusai.firsttime_2"
-        android:label="firsttime_2" >
+        android:label="fortaの使い方">
         <action
             android:id="@+id/action_firsttime_2_to_firsttime_3"
             app:destination="@id/firsttime_3" />
@@ -107,7 +107,7 @@
     <fragment
         android:id="@+id/firsttime_3"
         android:name="com.forta.housei_kokusai.firsttime_3"
-        android:label="firsttime_3" >
+        android:label="fortaの使い方" >
         <action
             android:id="@+id/action_firsttime_3_to_firsttime_4"
             app:destination="@id/firsttime_4" />
@@ -115,7 +115,7 @@
     <fragment
         android:id="@+id/firsttime_4"
         android:name="com.forta.housei_kokusai.firsttime_4"
-        android:label="firsttime_4" >
+        android:label="fortaの使い方" >
         <action
             android:id="@+id/action_firsttime_4_to_tourokuManday"
             app:destination="@id/tourokuManday" />

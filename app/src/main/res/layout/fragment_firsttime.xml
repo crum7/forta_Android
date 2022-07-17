@@ -12,59 +12,52 @@
     <ScrollView
         android:layout_height="match_parent"
         android:layout_width="match_parent">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-    <TextView
-        android:id="@+id/welcome"
-        android:layout_width="match_parent"
-        android:layout_height="60sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="fortaへようこそ"
-        android:gravity="center"
-        android:textSize="45sp"/>
-
-    <TextView
-        android:id="@+id/first"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="1. まずは、ユーザーネームの設定から。"
-        android:textSize="@dimen/browser_actions_context_menu_min_padding"
-        app:layout_constraintTop_toBottomOf="@id/welcome"
-        android:paddingTop="200sp"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-        <TextView
-            android:id="@+id/first_add"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="友達があなたを認識するために使用され、何度でも変更できます。"
-            android:textSize="13sp"
-            app:layout_constraintTop_toBottomOf="@id/first"
-            android:paddingTop="20sp"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="678dp">
 
 
+                <TextView
+                    android:id="@+id/welcome"
+                    android:layout_width="match_parent"
+                    android:layout_height="60sp"
+                    android:gravity="center"
+                    android:text="fortaへようこそ"
+                    android:textSize="45sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/first"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="200sp"
+                    android:text="1. まずは、ユーザーネームの設定から。"
+                    android:textSize="@dimen/browser_actions_context_menu_min_padding"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/welcome" />
+
+                <TextView
+                    android:id="@+id/first_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20sp"
+                    android:text="友達があなたを認識するために使用され、何度でも変更できます。"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/first" />
 
 
-        <EditText
-            android:id="@+id/changeName_first"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:hint="ユーザーネーム"
-            android:inputType="text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/first_add"
-            android:paddingTop="30sp"
-
-            android:maxLength="10"
-            android:maxLines="1"
-
-            android:digits="
+                <EditText
+                    android:id="@+id/changeName_first"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:digits="
 abcdefghijklmnopqrstuvwxyz
 0123456789
 あいうえお
@@ -140,45 +133,61 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 abcdefghijklmnopqrstuvwxyz
 
 "
-            />
+                    android:hint="ユーザーネーム"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:maxLines="1"
 
-        <TextView
-            android:id="@+id/first_caution"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="13sp"
-            app:layout_constraintTop_toBottomOf="@id/changeName_first"
-            android:paddingTop="20sp"
-            app:layout_constraintStart_toStartOf="parent"/>
+                    android:paddingTop="30sp"
+                    app:layout_constraintStart_toStartOf="parent"
 
-        <Button
-            android:id="@+id/save_button_name_first"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/保存"
-            android:backgroundTint="#F7F7FF"
-            style="?android:attr/borderlessButtonStyle"
-            android:textColor="#00A1E9"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:paddingTop="30sp"
-            app:layout_constraintTop_toBottomOf="@id/first_add" />
+                    app:layout_constraintTop_toBottomOf="@id/first_add" />
 
+                <TextView
+                    android:id="@+id/first_caution"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20sp"
+                    android:text=""
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/changeName_first" />
 
-        <Button
-            android:id="@+id/button_first"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="350dp"
-            android:background="@drawable/kadomaru"
-            android:text="@string/次へ"
-            app:backgroundTint="@null"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/first_caution" />
+                <Button
+                    android:id="@+id/save_button_name_first"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#F7F7FF"
+                    android:paddingTop="30sp"
+                    android:text="@string/保存"
+                    android:textColor="#00A1E9"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/first_add" />
 
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/button_first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:background="@drawable/kadomaru"
+                    android:text="@string/次へ"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+        </LinearLayout>
+
     </ScrollView>
 </FrameLayout>

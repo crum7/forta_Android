@@ -13,20 +13,14 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <TextView
-                android:id="@+id/welcome"
-                android:layout_width="match_parent"
-                android:layout_height="60sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="fortaへようこそ"
-                android:gravity="center"
-                android:textSize="45sp"/>
+            android:layout_height="678sp">
 
 
             <TextView
@@ -37,7 +31,7 @@
                 android:text="2. 自分の時間割を設定しましょう。"
                 android:textSize="@dimen/browser_actions_context_menu_min_padding"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/welcome" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/second_add"
@@ -50,31 +44,42 @@
                 app:layout_constraintStart_toStartOf="parent"/>
 
 
-
-
             <ImageView
                 android:id="@+id/gifView1"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="522sp"
+                android:contentDescription="時間割の設定の説明"
+                android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/second_add"
-                android:contentDescription="時間割の設定の説明" />
+                app:layout_constraintTop_toBottomOf="@id/second_add" />
 
-
-            <Button
-                android:id="@+id/button_first_2"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:layout_marginTop="24dp"
-                android:background="@drawable/kadomaru"
-                android:text="@string/次へ"
-                app:backgroundTint="@null"
+                android:layout_height="0dip"
+                android:layout_marginTop="520dp"
+                android:layout_marginBottom="16sp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gifView1" />
+                app:layout_constraintTop_toTopOf="@+id/gifView1">
 
+                <Button
+                    android:id="@+id/button_first_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:background="@drawable/kadomaru"
+                    android:text="@string/次へ"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
     </ScrollView>
 </FrameLayout>

@@ -52,7 +52,7 @@ class firsttime_3: Fragment() ,View.OnClickListener {
 
 
 
-        val gifMovie2: Int=R.raw.test
+        val gifMovie2: Int=R.raw.tomodati
 
 
 
