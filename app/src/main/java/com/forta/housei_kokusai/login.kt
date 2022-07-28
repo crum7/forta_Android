@@ -163,13 +163,13 @@ class login : Fragment() {
                                 result.pendingIntent.intentSender, RC_ONE_TAP,
                                 null, 0, 0, 0, null)
                         } catch (e: IntentSender.SendIntentException) {
-                            Log.e(TAG, "Couldn't start One Tap UI: ${e.localizedMessage}")
+                            Toast.makeText( requireContext(), "Couldn't start One Tap UI: ${e.localizedMessage}" , Toast.LENGTH_SHORT).show()
                         }
 
                     }.addOnFailureListener { e ->
                         // No saved credentials found. Launch the One Tap sign-up flow, or
                         // do nothing and continue presenting the signed-out UI.
-                        Log.e(TAG, "No saved credentials: ${e.localizedMessage}")
+                        Toast.makeText(requireContext() , "No saved credentials: ${e.localizedMessage}" , Toast.LENGTH_SHORT).show()
                     }
             }
         }
@@ -182,7 +182,7 @@ class login : Fragment() {
 
     // Sign in to an existing password account
     private fun signInWithPassword(email: String, password: String) {
-        Log.e(TAG, "Signing in with email '$email' and '$password'")
+        Toast.makeText( requireContext(), "Signing in with email '$email' and '$password'" , Toast.LENGTH_SHORT).show()
         auth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener { authResult ->
                 val currentUser = authResult.user
@@ -190,7 +190,7 @@ class login : Fragment() {
             }
             .addOnFailureListener {
                 // If sign in fails, display a message to the user.
-                Log.w(TAG, "signInWithEmail:failure", it)
+                Toast.makeText(requireContext() , "signInWithEmail:failure" , Toast.LENGTH_SHORT).show()
                 Toast.makeText(requireContext(), "Authentication failed.",
                     Toast.LENGTH_SHORT).show()
             }
@@ -205,7 +205,7 @@ class login : Fragment() {
             }
             .addOnFailureListener {
                 // If sign in fails, display a message to the user.
-                Log.w(TAG, "createUserWithEmail:failure", it)
+                Toast.makeText(requireContext() , "createUserWithEmail:failure" , Toast.LENGTH_SHORT).show()
                 Toast.makeText(requireContext(), "Authentication failed.",
                     Toast.LENGTH_SHORT).show()
             }
@@ -217,12 +217,12 @@ class login : Fragment() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithCredential:success")
+                    Toast.makeText(requireContext() , "signInWithCredential:success" , Toast.LENGTH_SHORT).show()
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    Toast.makeText(requireContext() , "signInWithCredential:failure" , Toast.LENGTH_SHORT).show()
                     Snackbar.make(requireView(),
                         "Authentication Failed.",
                         Snackbar.LENGTH_SHORT).show()
@@ -245,7 +245,7 @@ class login : Fragment() {
                     firebaseAuthWithGoogle(account.idToken!!)
                 } catch (e: ApiException) {
                     // Google Sign In failed, update UI appropriately
-                    Log.w(TAG, "Google sign in failed", e)
+                    Toast.makeText(requireContext() , "Google sign in failed" , Toast.LENGTH_SHORT).show()
                     // ...
                 }
             }
