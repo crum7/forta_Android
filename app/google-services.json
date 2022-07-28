@@ -93,6 +93,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "153359492144-2o6vgecrah5aocvdfgtomavulf5elk7s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.forta.housei_kokusai",
+            "certificate_hash": "50773120d115f19f71257bafffba7f163e4df9e5"
+          }
+        },
+        {
           "client_id": "153359492144-e053l14g3r80k54qbd34ge9k9bdkpasm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
