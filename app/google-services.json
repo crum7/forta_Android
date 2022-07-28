@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "153359492144-0h4gfv4clhdmvg3on09mcqsnau6vebaa.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.housei_kokusai",
-            "certificate_hash": "b1aac6d561a2804d71624d186ad1777377903b86"
-          }
-        },
-        {
           "client_id": "153359492144-0dq8dgdsfsfgjtgqbk0jjehcd80kqbns.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -30,6 +22,9 @@
       "api_key": [
         {
           "current_key": "AIzaSyB1JxImYZeJ56ruAoSR-bHW7cXpVJoXM_Q"
+        },
+        {
+          "current_key": "AIzaSyBz0HvDEl5YdHtfX1uPvvpIgAKLw3EDGMY"
         }
       ],
       "services": {
@@ -38,6 +33,13 @@
             {
               "client_id": "153359492144-0dq8dgdsfsfgjtgqbk0jjehcd80kqbns.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "153359492144-4utucgf222aiv9puunogunfa8iaoceiq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.shu.--------"
+              }
             }
           ]
         }
@@ -59,6 +61,9 @@
       "api_key": [
         {
           "current_key": "AIzaSyB1JxImYZeJ56ruAoSR-bHW7cXpVJoXM_Q"
+        },
+        {
+          "current_key": "AIzaSyBz0HvDEl5YdHtfX1uPvvpIgAKLw3EDGMY"
         }
       ],
       "services": {
@@ -67,6 +72,13 @@
             {
               "client_id": "153359492144-0dq8dgdsfsfgjtgqbk0jjehcd80kqbns.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "153359492144-4utucgf222aiv9puunogunfa8iaoceiq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.shu.--------"
+              }
             }
           ]
         }
@@ -74,12 +86,20 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:153359492144:android:433948fa4a4d45da5279f5",
+        "mobilesdk_app_id": "1:153359492144:android:2b85fcbdd63a96c25279f5",
         "android_client_info": {
           "package_name": "com.forta.housei_kokusai"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "153359492144-e053l14g3r80k54qbd34ge9k9bdkpasm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.forta.housei_kokusai",
+            "certificate_hash": "b1aac6d561a2804d71624d186ad1777377903b86"
+          }
+        },
         {
           "client_id": "153359492144-0dq8dgdsfsfgjtgqbk0jjehcd80kqbns.apps.googleusercontent.com",
           "client_type": 3
@@ -88,6 +108,9 @@
       "api_key": [
         {
           "current_key": "AIzaSyB1JxImYZeJ56ruAoSR-bHW7cXpVJoXM_Q"
+        },
+        {
+          "current_key": "AIzaSyBz0HvDEl5YdHtfX1uPvvpIgAKLw3EDGMY"
         }
       ],
       "services": {
@@ -96,6 +119,13 @@
             {
               "client_id": "153359492144-0dq8dgdsfsfgjtgqbk0jjehcd80kqbns.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "153359492144-4utucgf222aiv9puunogunfa8iaoceiq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.shu.--------"
+              }
             }
           ]
         }

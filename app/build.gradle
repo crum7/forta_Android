@@ -5,13 +5,12 @@ buildscript {
         google()
 
 
-        jcenter()
         mavenCentral()
         maven { url 'https://maven.google.com' }
     }
     dependencies {
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.4.2")
-        classpath 'com.google.gms:google-services:4.3.10'
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0")
+        classpath 'com.google.gms:google-services:4.3.13'
     }
 
 }
@@ -28,6 +27,29 @@ buildscript {
 
     }
 
+
+
+
+
+
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+
+
+
+
+
+
+
+
+
+
+
     android {
         compileSdk 32
 
@@ -35,17 +57,38 @@ buildscript {
             applicationId "com.forta.housei_kokusai"
             minSdk 21
             targetSdk 32
-            versionCode 8
-            versionName "1.8"
+            versionCode 9
+            versionName "1.9"
 
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         }
+
+
+
+
+        signingConfigs {
+            release {
+                keyAlias keystoreProperties['KeyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+                storePassword keystoreProperties['storePassword']
+            }
+        }
+
+
+
+
+
+
+
 
 
         buildTypes {
             release {
                 minifyEnabled false
                 proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+                signingConfig signingConfigs.release
             }
         }
         compileOptions {
@@ -64,6 +107,10 @@ buildscript {
             transitive = true
         }
 
+        implementation platform('com.google.firebase:firebase-bom:30.3.1')
+        implementation 'com.google.firebase:firebase-analytics-ktx'
+
+
 
 
         // Declare the dependency for the Firebase Authentication library
@@ -71,19 +118,19 @@ buildscript {
         implementation 'com.google.firebase:firebase-auth-ktx'
 
         // Also declare the dependency for the Google Play services library and specify its version
-        implementation 'com.google.android.gms:play-services-auth:20.2.0'
+        //implementation 'com.google.android.gms:play-services-auth-ktx:20.2.0'
 
-        implementation 'androidx.core:core-ktx:1.7.0'
+        implementation 'androidx.core:core-ktx:1.8.0'
 
         implementation 'com.google.firebase:firebase-auth-ktx'
-        implementation 'androidx.appcompat:appcompat:1.4.1'
-        implementation 'com.google.android.material:material:1.5.0'
-        implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+        implementation 'androidx.appcompat:appcompat:1.4.2'
+        implementation 'com.google.android.material:material:1.6.1'
+        implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
         implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-        implementation 'com.google.firebase:firebase-analytics:20.1.2'
-        implementation 'com.google.firebase:firebase-database-ktx:20.0.4'
+        implementation 'com.google.firebase:firebase-analytics:21.1.0'
+        implementation 'com.google.firebase:firebase-database-ktx:20.0.5'
         implementation 'androidx.test:core-ktx:1.4.0'
-        implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.9'
+        implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.12'
         testImplementation 'junit:junit:4.13.2'
         androidTestImplementation 'androidx.test.ext:junit:1.1.3'
         androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -98,23 +145,23 @@ buildscript {
         // Also declare the dependency for the Google Play services library and specify its version
         implementation 'com.google.android.gms:play-services-auth:20.2.0'
 
-        def nav_version = "2.4.1"
         // Java language implementation
-        implementation "androidx.navigation:navigation-fragment:$nav_version"
-        implementation "androidx.navigation:navigation-ui:$nav_version"
+        implementation "androidx.navigation:navigation-fragment-ktx:2.5.0"
+        implementation "androidx.navigation:navigation-ui-ktx:2.5.0"
+
 
         // Kotlin
-        implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-        implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+        implementation "androidx.navigation:navigation-fragment-ktx:2.5.0"
+        implementation "androidx.navigation:navigation-ui-ktx:2.5.0"
 
         // Feature module Support
-        implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+        implementation "androidx.navigation:navigation-dynamic-features-fragment:2.5.0"
 
         // Testing Navigation
-        androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+        androidTestImplementation "androidx.navigation:navigation-testing:2.5.0"
 
         // Jetpack Compose Integration
-        implementation "androidx.navigation:navigation-compose:$nav_version"
+        implementation "androidx.navigation:navigation-compose:2.5.0"
 
 
 
@@ -132,9 +179,9 @@ buildscript {
         implementation 'com.google.firebase:firebase-auth-ktx'
 
         // Also declare the dependency for the Google Play services library and specify its version
-        implementation 'com.firebaseui:firebase-ui-auth:5.0.0'
-        implementation "androidx.activity:activity-ktx:1.4.0"
-        implementation "androidx.fragment:fragment-ktx:1.4.1"
+        //implementation 'com.firebaseui:firebase-ui-auth:5.0.0'
+        implementation "androidx.activity:activity-ktx:1.5.0"
+        implementation "androidx.fragment:fragment-ktx:1.5.0"
 
 
 
