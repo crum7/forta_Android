@@ -35,7 +35,7 @@ import com.google.firebase.ktx.Firebase
 const val RC_SIGN_IN = 123
 const val RC_ONE_TAP = 124
 
-var navController: NavController? = null
+val navController: NavController? = null
 
 class login : Fragment() {
 
@@ -246,6 +246,7 @@ class login : Fragment() {
                 } catch (e: ApiException) {
                     // Google Sign In failed, update UI appropriately
                     Toast.makeText(requireContext() , "Google sign in failed" , Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_login2_to_tourokuManday)////////////////////////////////////////////////////////////////////////////////////
                     // ...
                 }
             }
